@@ -365,7 +365,9 @@ h2 {
 }
 
 @media (max-width: 699px) {
-  .hero-carousel-slide img {
+  .hero-carousel-slide img,
+  .hero-media:hover .hero-carousel-slide[aria-hidden='false'] img,
+  .hero-media:focus-visible .hero-carousel-slide[aria-hidden='false'] img {
     transform: scale(1.05);
   }
 }
