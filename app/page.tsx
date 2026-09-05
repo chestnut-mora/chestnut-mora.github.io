@@ -2,7 +2,7 @@
 
 /* oxlint-disable next/no-img-element */
 
-import { useEffect, useState, type ReactNode } from 'react';
+import { useEffect, useRef, useState, type KeyboardEvent, type MouseEvent, type PointerEvent, type ReactNode } from 'react';
 import Image from 'next/image';
 import {
   ArrowRight,
@@ -20,6 +20,7 @@ import {
   X,
 } from 'lucide-react';
 import { faqItems } from '@/data/faq';
+import { heroImages } from '@/data/hero';
 import { navigation } from '@/data/navigation';
 import { MYSHIP_PRODUCTS_PATH, type MyShipDataset, type MyShipProduct } from '@/data/myship';
 import { social } from '@/data/social';
@@ -125,6 +126,143 @@ function ProductSkeleton({ index }: { index: number }) {
         <span className="collection-skeleton-line collection-skeleton-line-meta" />
       </div>
     </article>
+  );
+}
+
+function HeroImageCarousel() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isInitializing, setIsInitializing] = useState(true);
+  const [isPaused, setIsPaused] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragOffset, setDragOffset] = useState(0);
+  const pointerStartX = useRef<number | null>(null);
+  const suppressClick = useRef(false);
+
+  useEffect(() => {
+    let enableTransition = 0;
+    const randomize = window.setTimeout(() => {
+      setActiveIndex(Math.floor(Math.random() * heroImages.length));
+      enableTransition = window.requestAnimationFrame(() => setIsInitializing(false));
+    }, 0);
+    return () => {
+      window.clearTimeout(randomize);
+      if (enableTransition) window.cancelAnimationFrame(enableTransition);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isPaused || heroImages.length < 2) return;
+
+    const timeout = window.setTimeout(() => {
+      setActiveIndex((current) => (current + 1) % heroImages.length);
+    }, 3500);
+    return () => window.clearTimeout(timeout);
+  }, [activeIndex, isPaused]);
+
+  const moveToAdjacentImage = (direction: -1 | 1) => {
+    setActiveIndex((current) => (current + direction + heroImages.length) % heroImages.length);
+  };
+
+  const handlePointerDown = (event: PointerEvent<HTMLButtonElement>) => {
+    if (event.button !== 0) return;
+
+    pointerStartX.current = event.clientX;
+    suppressClick.current = false;
+    setDragOffset(0);
+    setIsDragging(true);
+    setIsPaused(true);
+    event.currentTarget.setPointerCapture?.(event.pointerId);
+  };
+
+  const handlePointerMove = (event: PointerEvent<HTMLButtonElement>) => {
+    const startX = pointerStartX.current;
+    if (startX === null) return;
+
+    const bounds = event.currentTarget.getBoundingClientRect();
+    const distance = event.clientX - startX;
+    setDragOffset(Math.max(-bounds.width, Math.min(bounds.width, distance)));
+  };
+
+  const handlePointerUp = (event: PointerEvent<HTMLButtonElement>) => {
+    const startX = pointerStartX.current;
+    pointerStartX.current = null;
+    setIsDragging(false);
+    setIsPaused(false);
+    if (startX === null) return;
+
+    const distance = event.clientX - startX;
+    const didSwipe = Math.abs(distance) >= 36;
+    suppressClick.current = didSwipe;
+    setDragOffset(0);
+    if (didSwipe) moveToAdjacentImage(distance < 0 ? 1 : -1);
+  };
+
+  const handlePointerCancel = () => {
+    pointerStartX.current = null;
+    setIsDragging(false);
+    setDragOffset(0);
+    setIsPaused(false);
+  };
+
+  const handleClick = () => {
+    if (suppressClick.current) {
+      suppressClick.current = false;
+      return;
+    }
+    moveToAdjacentImage(1);
+  };
+
+  const handleContextMenu = (event: MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    moveToAdjacentImage(-1);
+  };
+
+  const handleKeyDown = (event: KeyboardEvent<HTMLButtonElement>) => {
+    if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+    event.preventDefault();
+    setIsPaused(false);
+    moveToAdjacentImage(event.key === 'ArrowLeft' ? -1 : 1);
+  };
+
+  return (
+    <button
+      type="button"
+      className="hero-media image-reveal"
+      aria-roledescription="carousel"
+      aria-label="栗子森林形象圖片輪播，左鍵下一張、右鍵上一張，可左右滑動或使用左右方向鍵切換"
+      onClick={handleClick}
+      onContextMenu={handleContextMenu}
+      onKeyDown={handleKeyDown}
+      onPointerDown={handlePointerDown}
+      onPointerMove={handlePointerMove}
+      onPointerUp={handlePointerUp}
+      onPointerCancel={handlePointerCancel}
+    >
+      <div className="hero-carousel-viewport">
+        <div
+          className="hero-carousel-track"
+          style={{
+            transform: `translate3d(calc(-${activeIndex * 100}% + ${dragOffset}px), 0, 0)`,
+            transition: isDragging || isInitializing ? 'none' : undefined,
+          }}
+        >
+          {heroImages.map((slide, index) => (
+            <div className="hero-carousel-slide" key={slide.id} aria-hidden={index !== activeIndex}>
+              <Image
+                src={slide.image}
+                alt={slide.alt}
+                width={slide.width}
+                height={slide.height}
+                priority={index === 0}
+                loading={index === 0 ? 'eager' : 'lazy'}
+                decoding="async"
+                draggable={false}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    </button>
   );
 }
 
@@ -247,20 +385,7 @@ export default function Home() {
       <main id="top">
         <section className="hero" aria-labelledby="hero-title">
           <div className="container hero-inner">
-            <div className="hero-media image-reveal">
-              <Image
-                src="/assets/hero/hero-forest.png"
-                alt="陽光下的草編袋與暖色系萌栗手機鍊"
-                width="1080"
-                height="1350"
-                fetchPriority="high"
-                decoding="async"
-              />
-              <div className="hero-image-label" aria-hidden="true">
-                <span>little things</span>
-                <span>for every day</span>
-              </div>
-            </div>
+            <HeroImageCarousel />
 
             <div className="hero-card fade-up">
               <div className="hero-kicker">
@@ -696,7 +821,7 @@ export default function Home() {
                 @chestnut_mora
               </a>
               <a className="button button-primary" href={social.instagramUrl} target="_blank" rel="noopener noreferrer">
-                去 Instagram 逛逛 <ArrowUpRight size={17} strokeWidth={1.8} />
+                去逛逛 <ArrowUpRight size={17} strokeWidth={1.8} />
               </a>
             </div>
             <div className="ig-collage" aria-label="栗子森林生活情境圖片">

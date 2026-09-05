@@ -42,7 +42,9 @@ anchor id for navigation:
 
 1. `Header` — logo/wordmark, Instagram icon, 7-11 賣貨便 shopping-bag CTA immediately
    to its right, menu, and sticky soft-cream treatment. Do not add a floating side CTA.
-2. `Hero` — strongest approved lifestyle image, primary message, primary CTA.
+2. `Hero` — a left-side carousel of all approved local brand images, primary message,
+   and primary CTA. Images advance from right to left every 3.5 seconds; visitors can
+   swipe or drag manually, with no visible carousel indicator or control icons.
 3. `BrandIntro` (`#about`) — what the studio is and why the collection exists.
 4. `WhatIsMengLi` (`#mengli`) — three values: 正版角色、手工搭配、小量收藏.
 5. `FeaturedProducts` (`#collection`) — an image-led set of 4–6 approved Instagram
@@ -194,6 +196,8 @@ Instagram `sameAs`. Do not invent address, telephone, legal name, or founding da
 
 - Header, menu, anchor links, Instagram links, 7-11 shop link, carousel swipe, FAQ
   accordion, and footer all work.
+- Hero image carousel advances every 3.5 seconds, moves left, supports pointer/touch
+  swiping, and has no visible guide icons or indicator controls.
 - Sticky CTA is mobile-only and hides/fades before the footer.
 - The gallery stays image-led and does not display a maintained price or inventory
   field; FAQ copy matches the approved service details in `CONTENT.md`.

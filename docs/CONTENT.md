@@ -308,7 +308,7 @@ Body:
 
 Handle: `@chestnut_mora`
 
-Button: `去 Instagram 逛逛 →`
+Button: `去逛逛 →`
 
 ### Footer
 
