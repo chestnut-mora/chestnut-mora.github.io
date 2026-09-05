@@ -1,5 +1,7 @@
 'use client';
 
+/* oxlint-disable next/no-img-element */
+
 import { useEffect, useState, type ReactNode } from 'react';
 import Image from 'next/image';
 import {
@@ -19,7 +21,7 @@ import {
 } from 'lucide-react';
 import { faqItems } from '@/data/faq';
 import { navigation } from '@/data/navigation';
-import { products } from '@/data/products';
+import { MYSHIP_PRODUCTS_PATH, type MyShipDataset, type MyShipProduct } from '@/data/myship';
 import { social } from '@/data/social';
 
 const trustItems = [
@@ -57,10 +59,83 @@ function InstagramMark({ size, tone = 'brown' }: { size: number; tone?: 'brown' 
   return <Image className="instagram-mark" src={source} alt="" width={size} height={size} />;
 }
 
+const myShipCardTones = ['pink', 'blush', 'sage', 'forest', 'lavender', 'night'] as const;
+
+function formatSyncTime(value: string) {
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return null;
+  return new Intl.DateTimeFormat('zh-TW', {
+    timeZone: 'Asia/Taipei',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false,
+  }).format(date);
+}
+
+function MyShipProductCard({ product, index }: { product: MyShipProduct; index: number }) {
+  const [imageFailed, setImageFailed] = useState(false);
+  const productUrl = product.deepLink ?? product.sourceUrl;
+  const tone = myShipCardTones[index % myShipCardTones.length];
+
+  return (
+    <article
+      className={`product-card product-card-${tone}`}
+      data-product-name={product.name}
+      data-product-status={product.status}
+    >
+      <a className="product-image-wrap" href={productUrl} target="_blank" rel="noopener noreferrer" aria-label={`查看${product.name}`}>
+        {imageFailed || !product.image ? (
+          <span className="product-image-fallback" aria-hidden="true">
+            <Image src="/assets/brand/logo-brown.png" alt="" width={360} height={360} />
+          </span>
+        ) : (
+          <img
+            src={product.image}
+            alt={`${product.name} 萌栗商品圖片`}
+            loading="lazy"
+            decoding="async"
+            onError={() => setImageFailed(true)}
+          />
+        )}
+      </a>
+      <div className="product-card-body">
+        <h3>{product.name}</h3>
+        <div className="product-card-footer">
+          <span className="product-price">
+            {product.price === null ? '價格請見賣貨便' : `NT$${product.price.toLocaleString('zh-TW')}`}
+          </span>
+          <a href={productUrl} target="_blank" rel="noopener noreferrer" aria-label={`帶${product.name}回家`}>
+            帶它回家 <ArrowUpRight size={15} strokeWidth={1.8} />
+          </a>
+        </div>
+      </div>
+    </article>
+  );
+}
+
+function ProductSkeleton({ index }: { index: number }) {
+  const tone = myShipCardTones[index % myShipCardTones.length];
+  return (
+    <article className={`product-card product-card-${tone} collection-skeleton`} aria-hidden="true">
+      <div className="collection-skeleton-image" />
+      <div className="product-card-body">
+        <span className="collection-skeleton-line collection-skeleton-line-title" />
+        <span className="collection-skeleton-line collection-skeleton-line-meta" />
+      </div>
+    </article>
+  );
+}
+
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [showStickyCta, setShowStickyCta] = useState(true);
+  const [myShipProducts, setMyShipProducts] = useState<MyShipProduct[]>([]);
+  const [myShipLoadState, setMyShipLoadState] = useState<'loading' | 'ready' | 'error'>('loading');
+  const [myShipSyncedAt, setMyShipSyncedAt] = useState<string | null>(null);
+  const [showAllMyShipProducts, setShowAllMyShipProducts] = useState(false);
 
   useEffect(() => {
     const footer = document.querySelector<HTMLElement>('#site-footer');
@@ -74,7 +149,34 @@ export default function Home() {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    let cancelled = false;
+
+    fetch(MYSHIP_PRODUCTS_PATH, { cache: 'no-store' })
+      .then(async (response) => {
+        if (!response.ok) throw new Error(`MyShip JSON returned HTTP ${response.status}`);
+        return (await response.json()) as MyShipDataset;
+      })
+      .then((dataset) => {
+        if (cancelled || !Array.isArray(dataset.products)) return;
+        setMyShipProducts(dataset.products.filter((product) => product.status === 'available'));
+        setMyShipSyncedAt(dataset.syncedAt ?? null);
+        setShowAllMyShipProducts(false);
+        setMyShipLoadState('ready');
+      })
+      .catch(() => {
+        if (cancelled) return;
+        setMyShipProducts([]);
+        setMyShipLoadState('error');
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   const closeMenu = () => setMenuOpen(false);
+  const visibleMyShipProducts = showAllMyShipProducts ? myShipProducts : myShipProducts.slice(0, 12);
 
   return (
     <div className="site-shell">
@@ -289,34 +391,40 @@ export default function Home() {
               </a>
             </div>
 
-            <section className="product-scroller" aria-label="近期萌栗商品，左右滑動查看">
-              {products.map((product, index) => (
-                <article className={`product-card product-card-${product.accent}`} key={product.id}>
-                  <a className="product-image-wrap" href={product.instagramUrl} target="_blank" rel="noopener noreferrer">
-                    <Image
-                      src={product.image}
-                      alt={product.alt}
-                      width={product.width}
-                      height={product.height}
-                      loading="lazy"
-                      decoding="async"
-                    />
-                    <span className="product-badge">萌栗日常</span>
-                  </a>
-                  <div className="product-card-body">
-                    <p className="product-series">MORI / {String(index + 1).padStart(2, '0')}</p>
-                    <h3>{product.caption}</h3>
-                    <div className="product-card-footer">
-                      <span className="product-note">手作小收藏</span>
-                      <a href={product.instagramUrl} target="_blank" rel="noopener noreferrer" aria-label={`在 Instagram 查看${product.caption}`}>
-                        看這一條 <ArrowUpRight size={15} strokeWidth={1.8} />
-                      </a>
-                    </div>
-                  </div>
-                </article>
-              ))}
+            <section
+              id="myship-product-scroller"
+              className="product-scroller"
+              aria-label="目前有庫存的萌栗商品，左右滑動查看"
+              aria-busy={myShipLoadState === 'loading'}
+            >
+              {myShipLoadState === 'loading' ? (
+                Array.from({ length: 4 }, (_, index) => <ProductSkeleton key={`skeleton-${index}`} index={index} />)
+              ) : myShipLoadState === 'error' || myShipProducts.length === 0 ? (
+                <p className="collection-state">萌栗們正在整理森林中 ♡</p>
+              ) : (
+                visibleMyShipProducts.map((product, index) => <MyShipProductCard key={product.id} product={product} index={index} />)
+              )}
             </section>
-            <p className="scroll-hint"><ArrowRight size={15} strokeWidth={1.5} /> 左右滑動探索更多</p>
+            {myShipLoadState === 'ready' && visibleMyShipProducts.length > 1 ? (
+              <p className="scroll-hint"><ArrowRight size={15} strokeWidth={1.5} /> 左右滑動探索更多</p>
+            ) : null}
+            {myShipLoadState === 'ready' && myShipProducts.length > 12 ? (
+              <div className="collection-expand-wrap">
+                <button
+                  className="collection-expand-button"
+                  type="button"
+                  aria-expanded={showAllMyShipProducts}
+                  aria-controls="myship-product-scroller"
+                  onClick={() => setShowAllMyShipProducts((current) => !current)}
+                >
+                  {showAllMyShipProducts ? '收起卡片' : `所有萌栗（${myShipProducts.length}）`}
+                  <ChevronDown className={showAllMyShipProducts ? 'collection-expand-icon is-expanded' : 'collection-expand-icon'} size={17} strokeWidth={1.8} />
+                </button>
+              </div>
+            ) : null}
+            {myShipLoadState === 'ready' && myShipSyncedAt && formatSyncTime(myShipSyncedAt) ? (
+              <p className="sync-note">同步於 {formatSyncTime(myShipSyncedAt)}</p>
+            ) : null}
           </div>
         </section>
 
