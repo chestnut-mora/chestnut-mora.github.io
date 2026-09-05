@@ -224,7 +224,18 @@ async function readLastGoodDataset() {
   return null;
 }
 
+function comparableDataset(dataset) {
+  return {
+    source: dataset.source,
+    sourceUrl: dataset.sourceUrl,
+    stats: dataset.stats,
+    products: dataset.products.map(({ syncedAt: _syncedAt, ...product }) => product),
+  };
+}
+
 async function main() {
+  const previous = await readLastGoodDataset();
+
   try {
     const html = await fetchSourceHtml();
     const embeddedProducts = extractEmbeddedProducts(html);
@@ -248,10 +259,15 @@ async function main() {
       products,
     };
     validateDataset(dataset);
+
+    if (previous && JSON.stringify(comparableDataset(previous)) === JSON.stringify(comparableDataset(dataset))) {
+      console.log(JSON.stringify({ output: OUTPUT_PATH, changed: false, stats, syncedAt: previous.syncedAt }, null, 2));
+      return;
+    }
+
     await writeFile(OUTPUT_PATH, `${JSON.stringify(dataset, null, 2)}\n`, 'utf8');
-    console.log(JSON.stringify({ output: OUTPUT_PATH, stats }, null, 2));
+    console.log(JSON.stringify({ output: OUTPUT_PATH, changed: true, stats, syncedAt }, null, 2));
   } catch (error) {
-    const previous = await readLastGoodDataset();
     const message = error instanceof Error ? error.message : String(error);
     if (previous) {
       console.error(`MyShip sync failed; keeping previous valid JSON: ${message}`);
