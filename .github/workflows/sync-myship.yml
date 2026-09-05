@@ -2,7 +2,7 @@ name: Sync MyShip products
 
 on:
   schedule:
-    - cron: '17 */6 * * *'
+    - cron: '*/30 * * * *'
   workflow_dispatch:
 
 permissions:

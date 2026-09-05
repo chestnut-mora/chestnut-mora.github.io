@@ -36,7 +36,7 @@ The homepage keeps the purchase journey light and sends visitors to the brand's
 Instagram and shop links rather than reproducing a dense store interface.
 
 Live shop availability is refreshed by `scripts/sync-myship.mjs` through the
-`Sync MyShip products` GitHub Action. It runs every six hours and can also be
+`Sync MyShip products` GitHub Action. It runs every 30 minutes and can also be
 started manually; when product, price, image, or availability data changes, the
 Action commits the new JSON snapshot and deploys the updated homepage. Variants
 marked sold out or unselectable are excluded from the visible collection.
