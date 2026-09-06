@@ -130,6 +130,7 @@ export function AvalUnboxingHero() {
   const pouchRef = useRef<HTMLImageElement>(null);
   const braceletRef = useRef<HTMLImageElement>(null);
   const pouchBraceletRef = useRef<HTMLDivElement>(null);
+  const avalPreloadStartedRef = useRef(false);
   const timelineRef = useRef<gsap.core.Timeline | null>(null);
   const [phase, setPhase] = useState<AvalStateId>('sealed');
   const [isRunning, setIsRunning] = useState(false);
@@ -139,29 +140,31 @@ export function AvalUnboxingHero() {
 
   const markAvalReady = useCallback(() => setAvalLiveReady(true), []);
 
-  useEffect(() => {
-    const preload = () => {
-      AVAL_PRELOAD_ASSETS.forEach((src) => {
-        const image = new window.Image();
-        image.decoding = 'async';
-        image.src = src;
-      });
-    };
+  const preloadAvalAssets = useCallback(() => {
+    if (avalPreloadStartedRef.current) return;
+    avalPreloadStartedRef.current = true;
+    AVAL_PRELOAD_ASSETS.forEach((src) => {
+      const image = new window.Image();
+      image.decoding = 'async';
+      image.src = src;
+    });
+  }, []);
 
+  useEffect(() => {
     let idleId: number | null = null;
     let timeoutId: number | null = null;
     const requestIdle = (window as Window & { requestIdleCallback?: typeof window.requestIdleCallback }).requestIdleCallback;
     if (typeof requestIdle === 'function') {
-      idleId = requestIdle.call(window, preload, { timeout: 1200 });
+      idleId = requestIdle.call(window, preloadAvalAssets, { timeout: 1200 });
     } else {
-      timeoutId = Number(globalThis.setTimeout(preload, 250));
+      timeoutId = Number(globalThis.setTimeout(preloadAvalAssets, 250));
     }
 
     return () => {
       if (idleId !== null) window.cancelIdleCallback(idleId);
       if (timeoutId !== null) globalThis.clearTimeout(timeoutId);
     };
-  }, []);
+  }, [preloadAvalAssets]);
 
   useLayoutEffect(() => {
     const elements = [sealedRef.current, peeledRef.current, openRef.current, cardRef.current, pouchBaseRef.current, pouchRef.current, braceletRef.current, pouchBraceletRef.current];
@@ -214,6 +217,7 @@ export function AvalUnboxingHero() {
   }, [avalActive, avalLiveReady]);
 
   const playTimeline = () => {
+    preloadAvalAssets();
     if (assetError) {
       setPhase('final');
       return;
@@ -232,7 +236,7 @@ export function AvalUnboxingHero() {
           <p className="aval-eyebrow">CHESTNUT MORA · UNBOXING</p>
           <div className="aval-heading"><span>把可愛和好心情，</span><span>一起送到你身邊。</span></div>
           <p className="aval-lede">從一個小小包裹開始，<br />打開屬於你的萌栗日常。</p>
-          <button className="button button-primary aval-primary-action" type="button" onClick={playTimeline} disabled={isRunning}>
+          <button className="button button-primary aval-primary-action" type="button" onPointerEnter={preloadAvalAssets} onFocus={preloadAvalAssets} onClick={playTimeline} disabled={isRunning}>
             {isRunning ? '萌栗正在來的路上…' : phase === 'final' ? '再打開一次' : '打開看看'} <span aria-hidden="true">→</span>
           </button>
         </div>
