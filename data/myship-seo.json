@@ -483,21 +483,6 @@
       "skuId": null
     },
     {
-      "id": "myship-74fc8087b1607fbd",
-      "slug": "mori-260605-009",
-      "name": "🩵Alice3條萌栗專屬🔗🩵",
-      "price": 1690,
-      "image": "https://myship.7-11.com.tw/i/cgdm/GM2602274753732/2606051201385919.jpg",
-      "sourceImageUrl": "https://myship.7-11.com.tw/i/cgdm/GM2602274753732/2606051201385919.jpg",
-      "sourceUrl": "https://myship.7-11.com.tw/general/detail/GM2602274753732",
-      "deepLink": null,
-      "status": "available",
-      "productId": "2602271055110356",
-      "variantId": "2606051201389436",
-      "specId": "2606051201389436",
-      "skuId": null
-    },
-    {
       "id": "myship-3ffa7395e2bea868",
       "slug": "mori-260605-010",
       "name": "Dimoo奇奇蒂蒂-紅領巾",
@@ -645,6 +630,21 @@
       "productId": "2602271055110356",
       "variantId": "2604241140721418",
       "specId": "2604241140721418",
+      "skuId": null
+    },
+    {
+      "id": "myship-74fc8087b1607fbd",
+      "slug": "mori-260605-009",
+      "name": "🩵Alice3條萌栗專屬🔗🩵",
+      "price": 1690,
+      "image": "https://myship.7-11.com.tw/i/cgdm/GM2602274753732/2606051201385919.jpg",
+      "sourceImageUrl": "https://myship.7-11.com.tw/i/cgdm/GM2602274753732/2606051201385919.jpg",
+      "sourceUrl": "https://myship.7-11.com.tw/general/detail/GM2602274753732",
+      "deepLink": null,
+      "status": "soldout",
+      "productId": "2602271055110356",
+      "variantId": "2606051201389436",
+      "specId": "2606051201389436",
       "skuId": null
     },
     {
