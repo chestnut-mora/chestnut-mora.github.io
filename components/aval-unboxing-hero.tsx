@@ -229,14 +229,14 @@ export function AvalUnboxingHero() {
         <div className="aval-player" data-state={phase} data-reduced-motion={reducedMotion ? 'true' : 'false'}>
           <div className="aval-stage">
             {assetError ? <span className="aval-static-fallback"><span>栗子森林</span><strong>你的萌栗已送達 ♡</strong></span> : <>
-              <Image ref={sealedRef} className="aval-object aval-gsap-object gsap-sealed" src="/assets/aval/sealed-box.png" alt="封好的栗子森林牛皮寄件盒" width={1536} height={1024} priority onError={() => setAssetError(true)} />
-              <Image ref={peeledRef} className="aval-object aval-gsap-object gsap-peeled" src="/assets/aval/peeled-box.webp" alt="與原始盒身構圖一致、HELLO 封口貼半撕開的牛皮盒" width={1536} height={1024} priority onError={() => setAssetError(true)} />
-              <Image ref={openRef} className="aval-object aval-gsap-object gsap-open" src="/assets/aval/open-box-empty.webp" alt="完整打開的栗子森林牛皮盒" width={906} height={1199} priority onError={() => setAssetError(true)} />
-              <Image ref={cardRef} className="aval-object aval-gsap-object gsap-card" src="/assets/aval/thank-you-card.webp" alt="栗子塔插畫 Thank You 小卡" width={800} height={999} priority onError={() => setAssetError(true)} />
+              <Image ref={sealedRef} className="aval-object aval-gsap-object gsap-sealed" src="/assets/aval/sealed-box.png" alt="封好的栗子森林萌粒手機鍊開箱盒" width={1536} height={1024} priority onError={() => setAssetError(true)} />
+              <Image ref={peeledRef} className="aval-object aval-gsap-object gsap-peeled" src="/assets/aval/peeled-box.webp" alt="HELLO 封口貼半撕開的栗子森林萌粒手機鍊包裝盒" width={1536} height={1024} priority onError={() => setAssetError(true)} />
+              <Image ref={openRef} className="aval-object aval-gsap-object gsap-open" src="/assets/aval/open-box-empty.webp" alt="完整打開的栗子森林萌粒手機鍊開箱盒" width={906} height={1199} priority onError={() => setAssetError(true)} />
+              <Image ref={cardRef} className="aval-object aval-gsap-object gsap-card" src="/assets/aval/thank-you-card.webp" alt="栗子森林萌粒手機鍊包裝內的原創手繪 Thank You 感謝小卡" width={800} height={999} priority onError={() => setAssetError(true)} />
               <Image ref={pouchBaseRef} className="aval-object aval-gsap-object gsap-pouch-base" src="/assets/aval/frosted-pouch-base.webp" alt="" aria-hidden="true" width={679} height={1200} priority onError={() => setAssetError(true)} />
-              <Image ref={pouchRef} className="aval-object aval-gsap-object gsap-pouch" src="/assets/aval/frosted-pouch-empty.webp" alt="保留淡粉棕色軟木塞圖樣的空玻璃罐造型霧面袋" width={679} height={1200} priority onError={() => setAssetError(true)} />
+              <Image ref={pouchRef} className="aval-object aval-gsap-object gsap-pouch" src="/assets/aval/frosted-pouch-empty.webp" alt="保留淡粉棕色軟木塞圖樣的萌粒手機鍊霧面包裝袋" width={679} height={1200} priority onError={() => setAssetError(true)} />
               <div ref={pouchBraceletRef} className="aval-object aval-gsap-object gsap-pouch-bracelet-layer">
-                <Image ref={braceletRef} className="gsap-bracelet-static" src="/assets/aval/bracelet.webp" alt="完整呈現的栗子森林萌栗手鍊" width={702} height={1200} priority onError={() => setAssetError(true)} />
+                <Image ref={braceletRef} className="gsap-bracelet-static" src="/assets/aval/bracelet.webp" alt="栗子森林萌粒手機鍊與角色吊飾完整展示" width={702} height={1200} priority onError={() => setAssetError(true)} />
               </div>
               <AvalBraceletPresence active={avalActive && phase === 'final'} reducedMotion={reducedMotion} onReady={markAvalReady} />
             </>}

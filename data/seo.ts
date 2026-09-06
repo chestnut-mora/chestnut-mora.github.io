@@ -48,9 +48,12 @@ export function getProductStatusLabel(status: MyShipProductStatus) {
 
 function getProductDescription(product: SeoProduct) {
   if (product.status === 'available') {
-    return `「${product.name}」是栗子森林以正版角色搭配串珠、鍊條與小配件完成的手作萌栗。`;
+    return `「${product.name}」是栗子森林以正版角色搭配串珠、鍊條與小配件完成的萌粒手機鍊；在栗子森林，我們稱它們為「萌栗」，適合掛在手機或包包上，成為日常裡的小收藏。`;
   }
-  return `「${product.name}」是栗子森林曾經製作的手作萌栗，保留在森林裡作為一份值得收藏的作品記錄。`;
+  if (product.status === 'soldout') {
+    return `「${product.name}」是栗子森林曾經製作的萌粒手機鍊，目前已經被喜愛它的主人收養；在栗子森林，我們稱為「萌栗」，我們將其保留在森林裡作為一份值得收藏的手作記錄。`;
+  }
+  return `「${product.name}」是栗子森林曾經製作的萌粒手機鍊，目前已經被喜愛它的主人收養；在栗子森林，我們稱為「萌栗」，我們將其保留在森林裡作為一份值得收藏的手作記錄。`;
 }
 
 function buildOffer(product: SeoProduct) {
@@ -86,7 +89,7 @@ export function buildProductJsonLd(product: SeoProduct) {
       '@type': 'Brand',
       name: BRAND_NAME,
     },
-    category: '手作手機鍊與包掛',
+    category: '角色手作萌粒手機鍊與手機吊飾',
     material: '串珠、鍊條與角色配件',
     ...(offer ? { offers: offer } : {}),
     ...(product.status === 'removed' || product.status === 'archived'

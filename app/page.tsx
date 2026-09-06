@@ -97,7 +97,7 @@ function MyShipProductCard({ product, index }: { product: MyShipProduct; index: 
         ) : (
           <img
             src={product.image}
-            alt={`${product.name} 萌栗商品圖片`}
+            alt={`${product.name} 手作萌粒手機鍊商品圖片`}
             loading="lazy"
             decoding="async"
             onError={() => setImageFailed(true)}
@@ -477,7 +477,7 @@ export default function Home() {
               <figure className="intro-photo image-reveal">
                 <Image
                   src="/assets/lifestyle/lifestyle-macaron.png"
-                  alt="粉色甜點場景裡的手作萌栗"
+                  alt="粉色甜點場景裡的手作萌粒手機鍊"
                   width="1122"
                   height="1402"
                   loading="lazy"
@@ -505,7 +505,7 @@ export default function Home() {
                   <span className="title-note">萌萌的角色，住進一條手作小世界。</span>
                 </>
               }
-              description="不只是一條手機鍊，也是可以每天帶出門的小收藏。"
+              description="在栗子森林，萌栗就是我們手作的萌粒手機鍊：把喜歡的角色、串珠與配件組合成可以每天帶出門的小收藏。"
             />
             <div className="promise-grid">
               <article className="promise-card promise-card-pink">
@@ -616,7 +616,7 @@ export default function Home() {
                 <figure className="lifestyle-small lifestyle-small-lavender image-reveal">
                   <Image
                     src="/assets/lifestyle/lifestyle-lavender.png"
-                    alt="紫色花朵與粉紫色萌栗掛在白色包包上"
+                  alt="紫色花朵與粉紫色萌粒手機鍊掛在白色包包上"
                     width="1122"
                     height="1402"
                     loading="lazy"
@@ -627,7 +627,7 @@ export default function Home() {
                 <figure className="lifestyle-small lifestyle-small-forest image-reveal">
                   <Image
                     src="/assets/hero/hero-forest.png"
-                    alt="兩只編織包與暖色角色萌栗在戶外果園裡"
+                  alt="兩只編織包上掛著暖色角色萌粒手機鍊，場景在戶外果園裡"
                     width="1080"
                     height="1350"
                     loading="lazy"
@@ -677,7 +677,7 @@ export default function Home() {
               <figure className="detail-image image-reveal">
                 <Image
                   src="/assets/details/detail-pink.png"
-                  alt="粉色珠珠、花朵配件與角色公仔的萌栗細節"
+                  alt="粉色珠珠、花朵配件與角色公仔組成的萌粒手機鍊細節"
                   width="1080"
                   height="1350"
                   loading="lazy"
@@ -687,7 +687,7 @@ export default function Home() {
               <figure className="detail-image image-reveal">
                 <Image
                   src="/assets/products/product-blue.png"
-                  alt="透明與藍色珠珠組成的萌栗配色細節"
+                  alt="透明與藍色珠珠組成的萌粒手機鍊配色細節"
                   width="1080"
                   height="1350"
                   loading="lazy"
@@ -697,7 +697,7 @@ export default function Home() {
               <figure className="detail-image image-reveal">
                 <Image
                   src="/assets/products/product-color.png"
-                  alt="繽紛珠珠與雙角色小配件的萌栗細節"
+                  alt="繽紛珠珠與雙角色小配件組成的萌粒手機鍊細節"
                   width="1080"
                   height="1350"
                   loading="lazy"
@@ -707,7 +707,7 @@ export default function Home() {
               <figure className="detail-image image-reveal">
                 <Image
                   src="/assets/details/detail-night.png"
-                  alt="夜晚氛圍中的角色、珠珠與掛點細節"
+                  alt="夜晚氛圍中的萌粒手機鍊角色、珠珠與掛點細節"
                   width="1080"
                   height="1350"
                   loading="lazy"

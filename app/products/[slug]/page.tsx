@@ -33,20 +33,23 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
   if (!product) return {};
 
   const productUrl = getProductUrl(product);
+  const productTitle = product.status === 'available'
+    ? `${product.name}｜萌粒手機鍊｜${BRAND_NAME_ZH} ${BRAND_NAME}`
+    : `${product.name}｜歷代萌粒手機鍊｜${BRAND_NAME_ZH} ${BRAND_NAME}`;
   return {
-    title: `${product.name}｜${BRAND_NAME_ZH} ${BRAND_NAME}`,
+    title: productTitle,
     description: getProductDescriptionForMetadata(product),
     alternates: { canonical: productUrl },
     openGraph: {
-      title: `${product.name}｜${BRAND_NAME_ZH}`,
+      title: productTitle,
       description: getProductDescriptionForMetadata(product),
       type: 'website',
       url: productUrl,
-      ...(product.image ? { images: [{ url: product.image, alt: `${product.name} 萌栗商品圖片` }] } : {}),
+      ...(product.image ? { images: [{ url: product.image, alt: `${product.name} 角色萌粒手機鍊與手作配件商品圖片` }] } : {}),
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${product.name}｜${BRAND_NAME_ZH}`,
+      title: productTitle,
       description: getProductDescriptionForMetadata(product),
       ...(product.image ? { images: [product.image] } : {}),
     },
@@ -81,7 +84,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
         </a>
         <section className="product-detail-hero" aria-labelledby="product-title">
           <div className="product-detail-media">
-            {product.image ? <img src={product.image} alt={`${product.name} 萌栗商品圖片`} /> : null}
+            {product.image ? <img src={product.image} alt={`${product.name} 角色萌粒手機鍊與手作配件商品圖片`} /> : null}
           </div>
           <div className="product-detail-copy">
             <p className={`product-status product-status-${product.status}`}>{getProductStatusLabel(product.status)}</p>

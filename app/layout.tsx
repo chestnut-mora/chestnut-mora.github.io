@@ -4,9 +4,9 @@ import './globals.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://chestnut-mora.github.io'),
-  title: '栗子森林 Chestnut Mora｜正版角色手作萌栗手機鍊',
+  title: '栗子森林 Chestnut Mora｜正版角色手作萌粒手機鍊與手機吊飾',
   description:
-    '栗子森林 Chestnut Mora，以正版角色搭配串珠與配件，手工製作一條條獨特萌栗，把喜歡的小角色掛進每天的日常。',
+    '栗子森林 Chestnut Mora，以台灣原創設計理念進行手作搭配，將正版角色與串珠、配件組合成獨特的萌粒手機鍊與手機吊飾；在栗子森林，我們稱這些陪伴日常的小收藏為「萌栗」。',
   alternates: {
     canonical: '/',
   },
@@ -14,8 +14,8 @@ export const metadata: Metadata = {
     icon: '/assets/brand/logo-brown.png',
   },
   openGraph: {
-    title: '栗子森林 Chestnut Mora',
-    description: '把喜歡的小角色，掛進每天的日常。',
+    title: '栗子森林 Chestnut Mora｜台灣手作萌粒手機鍊',
+    description: '正版角色 × 手作搭配，把喜歡的小角色做成可以掛在手機與包包上的萌栗手機鍊，每一條都獨一無二。',
     type: 'website',
     url: '/',
     images: [
@@ -29,8 +29,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: '栗子森林 Chestnut Mora',
-    description: '把喜歡的小角色，掛進每天的日常。',
+    title: '栗子森林 Chestnut Mora｜台灣手作萌粒手機鍊',
+    description: '正版角色 × 手作搭配，把喜歡的小角色做成可以掛在手機與包包上的萌栗手機鍊，每一條都獨一無二。',
     images: ['/assets/hero/hero-forest.png'],
   },
 };
