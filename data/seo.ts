@@ -6,6 +6,7 @@ export const SITE_ORIGIN = 'https://chestnut-mora.github.io';
 export const BRAND_NAME = 'Chestnut Mora';
 export const BRAND_NAME_ZH = '栗子森林';
 export const PRODUCT_SCHEMA_CATEGORY = '4550';
+export const PRODUCT_PLACEHOLDER_IMAGE = '/assets/brand/logo-brown.png';
 
 export type SeoProduct = {
   id: string;
@@ -27,6 +28,20 @@ export const myShipSeoProducts = dataset.products as SeoProduct[];
 
 export function getProductUrl(product: SeoProduct) {
   return `${SITE_ORIGIN}/products/${product.slug}`;
+}
+
+export function getPreferredProductImage(product: SeoProduct) {
+  return product.image || product.sourceImageUrl || null;
+}
+
+export function getPreferredProductImageAbsolute(product: SeoProduct) {
+  const image = getPreferredProductImage(product);
+  if (!image) return null;
+  try {
+    return new URL(image, SITE_ORIGIN).toString();
+  } catch {
+    return null;
+  }
 }
 
 export function getShopUrl(product: SeoProduct) {
@@ -78,13 +93,14 @@ function buildOffer(product: SeoProduct) {
 export function buildProductJsonLd(product: SeoProduct) {
   const productUrl = getProductUrl(product);
   const offer = buildOffer(product);
+  const productImage = getPreferredProductImageAbsolute(product);
   const productNode = {
     '@type': 'Product',
     '@id': `${productUrl}#product`,
     name: product.name,
     url: productUrl,
     description: getProductDescription(product),
-    ...(product.image ? { image: [product.image] } : {}),
+    ...(productImage ? { image: [productImage] } : {}),
     sku: product.skuId || product.variantId || product.specId || product.id,
     ...(product.variantId ? { identifier: product.variantId } : {}),
     brand: {

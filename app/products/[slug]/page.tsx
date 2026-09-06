@@ -3,12 +3,14 @@
 import type { Metadata } from 'next';
 import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import { notFound } from 'next/navigation';
+import { MyShipProductImage } from '@/components/myship-product-image';
 import {
   BRAND_NAME,
   BRAND_NAME_ZH,
   buildProductJsonLd,
   getProductBySlug,
   getProductDescriptionForMetadata,
+  getPreferredProductImageAbsolute,
   getProductStatusLabel,
   getProductUrl,
   getShopUrl,
@@ -33,6 +35,7 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
   if (!product) return {};
 
   const productUrl = getProductUrl(product);
+  const productImage = getPreferredProductImageAbsolute(product);
   const productTitle = product.status === 'available'
     ? `${product.name}｜泡泡瑪特 POP MART 萌粒手機鍊｜${BRAND_NAME_ZH} ${BRAND_NAME}`
     : `${product.name}｜絕版泡泡瑪特 POP MART 萌粒手機鍊｜${BRAND_NAME_ZH} ${BRAND_NAME}`;
@@ -45,13 +48,13 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
       description: getProductDescriptionForMetadata(product),
       type: 'website',
       url: productUrl,
-      ...(product.image ? { images: [{ url: product.image, alt: `${product.name} 角色萌粒手機鍊與手作配件商品圖片` }] } : {}),
+      ...(productImage ? { images: [{ url: productImage, alt: `${product.name} 角色萌粒手機鍊與手作配件商品圖片` }] } : {}),
     },
     twitter: {
       card: 'summary_large_image',
       title: productTitle,
       description: getProductDescriptionForMetadata(product),
-      ...(product.image ? { images: [product.image] } : {}),
+      ...(productImage ? { images: [productImage] } : {}),
     },
   };
 }
@@ -84,7 +87,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
         </a>
         <section className="product-detail-hero" aria-labelledby="product-title">
           <div className="product-detail-media">
-            {product.image ? <img src={product.image} alt={`${product.name} 角色萌粒手機鍊與手作配件商品圖片`} /> : null}
+            <MyShipProductImage product={product} alt={`${product.name} 角色萌粒手機鍊與手作配件商品圖片`} loading="eager" />
           </div>
           <div className="product-detail-copy">
             <p className={`product-status product-status-${product.status}`}>{getProductStatusLabel(product.status)}</p>

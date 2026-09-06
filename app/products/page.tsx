@@ -2,6 +2,7 @@
 
 import type { Metadata } from 'next';
 import { ArrowLeft, ArrowUpRight } from 'lucide-react';
+import { MyShipProductImage } from '@/components/myship-product-image';
 import { BRAND_NAME, BRAND_NAME_ZH, getProductStatusLabel, getProductUrl, getShopUrl, myShipSeoProducts, serializeJsonLd, SITE_ORIGIN } from '@/data/seo';
 import { social } from '@/data/social';
 
@@ -27,7 +28,7 @@ function ProductIndexCard({ product, index }: { product: (typeof myShipSeoProduc
   return (
     <article className={`product-card product-index-card product-card-${tone}`} data-product-status={product.status}>
       <a className="product-image-wrap" href={detailUrl} aria-label={`查看${product.name}商品頁`}>
-        {product.image ? <img src={product.image} alt={`手作 ${product.name} 萌粒手機鍊商品圖片`} loading="lazy" decoding="async" /> : <span className="product-image-fallback">栗子森林</span>}
+        <MyShipProductImage product={product} alt={`手作 ${product.name} 萌粒手機鍊商品圖片`} />
         <span className="product-badge">{isAvailable ? getProductStatusLabel(product.status) : '絕版'}</span>
       </a>
       <div className="product-card-body">

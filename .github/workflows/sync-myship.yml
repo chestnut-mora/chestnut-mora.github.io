@@ -40,7 +40,7 @@ jobs:
         id: changes
         shell: bash
         run: |
-          if git diff --quiet -- public/data/myship-products.json data/myship-seo.json public/sitemap.xml data/product-slug-registry.json; then
+          if git diff --quiet -- public/data/myship-products.json data/myship-seo.json public/sitemap.xml data/product-slug-registry.json public/assets/products; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
           else
             echo "changed=true" >> "$GITHUB_OUTPUT"
@@ -51,8 +51,8 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add public/data/myship-products.json data/myship-seo.json public/sitemap.xml data/product-slug-registry.json
-          git commit -m "Sync MyShip product availability"
+          git add public/data/myship-products.json data/myship-seo.json public/sitemap.xml data/product-slug-registry.json public/assets/products
+          git commit -m "Sync MyShip products and archive images"
           git push origin HEAD:main
 
       - name: Build static site

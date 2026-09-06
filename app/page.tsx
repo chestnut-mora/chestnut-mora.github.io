@@ -27,6 +27,7 @@ import { MYSHIP_PRODUCTS_PATH, type MyShipDataset, type MyShipProduct } from '@/
 import { buildHomepageJsonLd, serializeJsonLd } from '@/data/seo';
 import { social } from '@/data/social';
 import { AvalUnboxingHero } from '@/components/aval-unboxing-hero';
+import { MyShipProductImage } from '@/components/myship-product-image';
 
 const trustItems = [
   { label: '正版角色', icon: ShieldCheck },
@@ -79,7 +80,6 @@ function formatSyncTime(value: string) {
 }
 
 function MyShipProductCard({ product, index }: { product: MyShipProduct; index: number }) {
-  const [imageFailed, setImageFailed] = useState(false);
   const productUrl = product.deepLink ?? product.sourceUrl;
   const productDetailUrl = product.slug ? `/products/${product.slug}` : productUrl;
   const tone = myShipCardTones[index % myShipCardTones.length];
@@ -91,19 +91,7 @@ function MyShipProductCard({ product, index }: { product: MyShipProduct; index: 
       data-product-status={product.status}
     >
       <a className="product-image-wrap" href={productDetailUrl} aria-label={`查看${product.name}商品頁`}>
-        {imageFailed || !product.image ? (
-          <span className="product-image-fallback" aria-hidden="true">
-            <Image src="/assets/brand/logo-brown.png" alt="" width={360} height={360} />
-          </span>
-        ) : (
-          <img
-            src={product.image}
-            alt={`${product.name} 手作萌粒手機鍊商品圖片`}
-            loading="lazy"
-            decoding="async"
-            onError={() => setImageFailed(true)}
-          />
-        )}
+        <MyShipProductImage product={product} alt={`${product.name} 手作萌粒手機鍊商品圖片`} />
       </a>
       <div className="product-card-body">
         <h3><a href={productDetailUrl}>{product.name}</a></h3>

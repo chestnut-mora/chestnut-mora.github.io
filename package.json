@@ -9,6 +9,7 @@
     "dev": "vinext dev",
     "build": "vinext build",
     "sync:myship": "node scripts/sync-myship.mjs",
+    "archive:myship-images": "node scripts/archive-myship-product-images.mjs",
     "generate:seo": "node scripts/seo-assets.mjs",
     "test:myship": "node scripts/test-myship-lifecycle.mjs",
     "start": "wrangler dev --config dist/server/wrangler.json",
@@ -33,6 +34,7 @@
     "react-server-dom-webpack": "19.2.6",
     "recharts": "3.8.0",
     "shadcn": "4.18.0",
+    "sharp": "0.34.5",
     "tailwind-merge": "3.6.0",
     "tw-animate-css": "1.4.0",
     "vinext": "1.0.0-beta.5"

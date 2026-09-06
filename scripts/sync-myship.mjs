@@ -4,6 +4,7 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { MYSHIP_CONFIG, hasUnavailableNameSignal } from './myship-config.mjs';
 import { buildMyShipStats, mergeProductLifecycle, MYSHIP_LIFECYCLE_STATUSES } from './myship-lifecycle.mjs';
+import { archiveMissingProductImages, summarizeArchiveReport } from './archive-myship-product-images.mjs';
 import { writeSeoAssets } from './seo-assets.mjs';
 
 const ROOT_DIR = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -246,22 +247,30 @@ async function main() {
     const incomingProducts = normalizeProducts(embeddedProducts, syncedAt);
     const products = mergeProductLifecycle(previous?.products || [], incomingProducts, syncedAt);
     const stats = buildMyShipStats(products);
+    let archiveSummary = null;
     const dataset = await writeSeoAssets({
       source: MYSHIP_CONFIG.source,
       sourceUrl: MYSHIP_CONFIG.sourceUrl,
       syncedAt,
       stats,
       products,
-    }, { previousProducts: previous?.products || [] });
+    }, {
+      previousProducts: previous?.products || [],
+      enrichProducts: async (assignedProducts) => {
+        const archiveResult = await archiveMissingProductImages(assignedProducts);
+        archiveSummary = summarizeArchiveReport(archiveResult.report);
+        return archiveResult.products;
+      },
+    });
     validateDataset(dataset);
 
     if (previous && JSON.stringify(comparableDataset(previous)) === JSON.stringify(comparableDataset(dataset))) {
-      console.log(JSON.stringify({ output: OUTPUT_PATH, changed: false, stats, syncedAt: previous.syncedAt }, null, 2));
+      console.log(JSON.stringify({ output: OUTPUT_PATH, changed: false, stats, archive: archiveSummary, syncedAt: previous.syncedAt }, null, 2));
       return;
     }
 
     await writeFile(OUTPUT_PATH, `${JSON.stringify(dataset, null, 2)}\n`, 'utf8');
-    console.log(JSON.stringify({ output: OUTPUT_PATH, changed: true, stats, syncedAt }, null, 2));
+    console.log(JSON.stringify({ output: OUTPUT_PATH, changed: true, stats, archive: archiveSummary, syncedAt }, null, 2));
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
     if (previous) {

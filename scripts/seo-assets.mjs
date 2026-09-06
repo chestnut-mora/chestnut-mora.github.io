@@ -202,11 +202,13 @@ export function buildSitemap(products) {
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${entries}\n</urlset>\n`;
 }
 
-export async function writeSeoAssets(dataset, { previousProducts = [] } = {}) {
+export async function writeSeoAssets(dataset, { previousProducts = [], enrichProducts } = {}) {
   const registry = await readSlugRegistry();
   const assignedProducts = assignProductSlugs(dataset.products || [], registry);
+  const enrichedProducts = typeof enrichProducts === 'function' ? await enrichProducts(assignedProducts) : assignedProducts;
+  if (!Array.isArray(enrichedProducts)) throw new Error('SEO asset enrichment must return a product array');
   const seoRevision = await readSeoRevision();
-  const products = applyProductLastModified(previousProducts, assignedProducts, dataset.syncedAt, seoRevision);
+  const products = applyProductLastModified(previousProducts, enrichedProducts, dataset.syncedAt, seoRevision);
   const nextDataset = { ...dataset, products };
   const seoDataset = projectSeoDataset(nextDataset);
 

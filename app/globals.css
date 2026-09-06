@@ -1329,6 +1329,14 @@ h2 {
   transition: transform 450ms ease;
 }
 
+.product-image-wrap img.myship-product-image-placeholder {
+  width: 34%;
+  height: 34%;
+  margin: 33% auto 0;
+  object-fit: contain;
+  opacity: 0.42;
+}
+
 .product-image-fallback {
   display: grid;
   width: 100%;
@@ -1579,6 +1587,15 @@ h2 {
   width: 100%;
   aspect-ratio: 4 / 5;
   object-fit: cover;
+}
+
+.product-detail-media img.myship-product-image-placeholder {
+  width: 48%;
+  height: auto;
+  aspect-ratio: 1;
+  margin: 26% auto;
+  object-fit: contain;
+  opacity: 0.42;
 }
 
 .product-detail-copy {
