@@ -6,31 +6,6 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://chestnut-mora.github.io/products/mori-260424-001</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://chestnut-mora.github.io/products/mori-260424-002</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://chestnut-mora.github.io/products/mori-260424-003</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://chestnut-mora.github.io/products/mori-260424-004</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://chestnut-mora.github.io/products/mori-260424-005</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://chestnut-mora.github.io/products/mori-260424-006</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -101,72 +76,32 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://chestnut-mora.github.io/products/mori-260506-001</loc>
+    <loc>https://chestnut-mora.github.io/products/mori-260424-005</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://chestnut-mora.github.io/products/mori-260506-002</loc>
+    <loc>https://chestnut-mora.github.io/products/mori-260424-004</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://chestnut-mora.github.io/products/mori-260506-003</loc>
+    <loc>https://chestnut-mora.github.io/products/mori-260424-003</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://chestnut-mora.github.io/products/mori-260512-001</loc>
+    <loc>https://chestnut-mora.github.io/products/mori-260424-002</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://chestnut-mora.github.io/products/mori-260512-002</loc>
+    <loc>https://chestnut-mora.github.io/products/mori-260424-001</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://chestnut-mora.github.io/products/mori-260605-001</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://chestnut-mora.github.io/products/mori-260605-002</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://chestnut-mora.github.io/products/mori-260605-003</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://chestnut-mora.github.io/products/mori-260605-004</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://chestnut-mora.github.io/products/mori-260605-005</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://chestnut-mora.github.io/products/mori-260605-006</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://chestnut-mora.github.io/products/mori-260605-007</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://chestnut-mora.github.io/products/mori-260605-008</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://chestnut-mora.github.io/products/mori-260605-010</loc>
+    <loc>https://chestnut-mora.github.io/products/mori-260612-005</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -176,12 +111,47 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://chestnut-mora.github.io/products/mori-260608-001</loc>
+    <loc>https://chestnut-mora.github.io/products/mori-260605-010</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://chestnut-mora.github.io/products/mori-260612-005</loc>
+    <loc>https://chestnut-mora.github.io/products/mori-260605-008</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://chestnut-mora.github.io/products/mori-260605-007</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://chestnut-mora.github.io/products/mori-260605-006</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://chestnut-mora.github.io/products/mori-260605-005</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://chestnut-mora.github.io/products/mori-260605-004</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://chestnut-mora.github.io/products/mori-260605-003</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://chestnut-mora.github.io/products/mori-260605-002</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://chestnut-mora.github.io/products/mori-260605-001</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -206,7 +176,32 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://chestnut-mora.github.io/products/mori-260424-020</loc>
+    <loc>https://chestnut-mora.github.io/products/mori-260608-001</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://chestnut-mora.github.io/products/mori-260512-002</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://chestnut-mora.github.io/products/mori-260512-001</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://chestnut-mora.github.io/products/mori-260506-003</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://chestnut-mora.github.io/products/mori-260506-002</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://chestnut-mora.github.io/products/mori-260506-001</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -216,7 +211,17 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://chestnut-mora.github.io/products/mori-260424-020</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://chestnut-mora.github.io/products/mori-260605-009</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://chestnut-mora.github.io/products/mori-260726-001</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -227,11 +232,6 @@
   </url>
   <url>
     <loc>https://chestnut-mora.github.io/products/mori-260628-001</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://chestnut-mora.github.io/products/mori-260726-001</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
