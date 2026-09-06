@@ -3,6 +3,7 @@ import { readFile, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { MYSHIP_CONFIG, hasUnavailableNameSignal } from './myship-config.mjs';
+import { buildMyShipStats, mergeProductLifecycle, MYSHIP_LIFECYCLE_STATUSES } from './myship-lifecycle.mjs';
 
 const ROOT_DIR = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const OUTPUT_PATH = resolve(ROOT_DIR, 'public/data/myship-products.json');
@@ -92,7 +93,7 @@ function getSelectability(spec) {
 }
 
 function getStatus(stock, selectable) {
-  if (selectable === false) return 'unknown';
+  if (selectable === false) return 'soldout';
   if (stock === null) return 'unknown';
   if (stock > 0) return 'available';
   if (stock === 0) return 'soldout';
@@ -186,7 +187,7 @@ function validateDataset(dataset) {
   if (!dataset || !Array.isArray(dataset.products) || dataset.products.length === 0) {
     throw new Error('validation failed: no product variants were parsed');
   }
-  const allowedStatuses = new Set(['available', 'soldout', 'unknown']);
+  const allowedStatuses = new Set(MYSHIP_LIFECYCLE_STATUSES);
   const ids = new Set();
   for (const product of dataset.products) {
     if (!product.id || ids.has(product.id)) throw new Error('validation failed: duplicate or missing stable product id');
@@ -195,7 +196,6 @@ function validateDataset(dataset) {
     }
     ids.add(product.id);
   }
-  if (dataset.stats.available < 1) throw new Error('validation failed: no available variants were found');
 }
 
 async function fetchSourceHtml() {
@@ -242,15 +242,9 @@ async function main() {
     if (embeddedProducts.length === 0) throw new Error('no embedded MyShip product data found');
 
     const syncedAt = new Date().toISOString();
-    const products = normalizeProducts(embeddedProducts, syncedAt);
-    const stats = {
-      totalVariants: products.length,
-      available: products.filter((product) => product.status === 'available').length,
-      soldout: products.filter((product) => product.status === 'soldout').length,
-      excluded: products.filter((product) => product.excluded).length,
-      withImage: products.filter((product) => Boolean(product.sourceImageUrl)).length,
-      withoutImage: products.filter((product) => !product.sourceImageUrl).length,
-    };
+    const incomingProducts = normalizeProducts(embeddedProducts, syncedAt);
+    const products = mergeProductLifecycle(previous?.products || [], incomingProducts, syncedAt);
+    const stats = buildMyShipStats(products);
     const dataset = {
       source: MYSHIP_CONFIG.source,
       sourceUrl: MYSHIP_CONFIG.sourceUrl,

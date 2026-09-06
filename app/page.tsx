@@ -24,6 +24,7 @@ import { heroImages } from '@/data/hero';
 import { navigation } from '@/data/navigation';
 import { MYSHIP_PRODUCTS_PATH, type MyShipDataset, type MyShipProduct } from '@/data/myship';
 import { social } from '@/data/social';
+import { AvalUnboxingHero } from '@/components/aval-unboxing-hero';
 
 const trustItems = [
   { label: '正版角色', icon: ShieldCheck },
@@ -274,6 +275,7 @@ export default function Home() {
   const [myShipLoadState, setMyShipLoadState] = useState<'loading' | 'ready' | 'error'>('loading');
   const [myShipSyncedAt, setMyShipSyncedAt] = useState<string | null>(null);
   const [showAllMyShipProducts, setShowAllMyShipProducts] = useState(false);
+  const productScrollerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const footer = document.querySelector<HTMLElement>('#site-footer');
@@ -285,6 +287,26 @@ export default function Home() {
     );
     observer.observe(footer);
     return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const scroller = productScrollerRef.current;
+    if (!scroller) return;
+
+    const handleWheel = (event: globalThis.WheelEvent) => {
+      if (Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return;
+      const maxScroll = scroller.scrollWidth - scroller.clientWidth;
+      const canMove = event.deltaY > 0 ? scroller.scrollLeft < maxScroll - 1 : scroller.scrollLeft > 1;
+      if (!canMove) return;
+      event.preventDefault();
+      scroller.scrollBy({ left: event.deltaY * 1.15, behavior: 'smooth' });
+    };
+
+    scroller.addEventListener('wheel', handleWheel, { passive: false });
+
+    return () => {
+      scroller.removeEventListener('wheel', handleWheel);
+    };
   }, []);
 
   useEffect(() => {
@@ -383,6 +405,8 @@ export default function Home() {
       </header>
 
       <main id="top">
+        <AvalUnboxingHero />
+
         <section className="hero" aria-labelledby="hero-title">
           <div className="container hero-inner">
             <HeroImageCarousel />
@@ -517,6 +541,7 @@ export default function Home() {
             </div>
 
             <section
+              ref={productScrollerRef}
               id="myship-product-scroller"
               className="product-scroller"
               aria-label="目前有庫存的萌栗商品，左右滑動查看"

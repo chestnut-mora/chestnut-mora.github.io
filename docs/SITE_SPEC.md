@@ -41,6 +41,31 @@ started manually; when product, price, image, or availability data changes, the
 Action commits the new JSON snapshot and deploys the updated homepage. Variants
 marked sold out or unselectable are excluded from the visible collection.
 
+### MyShip product lifecycle and retention
+
+The sync data uses these lifecycle states:
+
+```text
+available → soldout → removed → archived
+```
+
+- `available`: shown in the homepage collection and treated as `InStock`.
+- `soldout`: hidden from the homepage collection, but the source record remains.
+- `removed`: the source record was absent from successful MyShip syncs for a full
+  24-hour grace period; it remains retained for historical product pages.
+- `archived`: an explicitly preserved historical work, labeled as a past/sold work,
+  and not removed by later syncs.
+
+`unknown` may still appear as an ingestion-safety state when MyShip provides a
+present option without enough stock information to classify it. It is not a
+lifecycle transition and is never used as evidence that a product is missing.
+
+A failed request, parse failure, abnormal response, or suspiciously empty result is
+not a successful sync. It keeps the last known good snapshot and cannot start or
+advance a product's missing-period clock. A product missing only once therefore is
+not immediately marked `removed`, and no automatic product-page deletion is part of
+this retention policy.
+
 ## Information architecture
 
 Keep this order on the single homepage. Each section should have one job and a stable

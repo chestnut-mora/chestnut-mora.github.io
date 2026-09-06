@@ -102,6 +102,29 @@ preserving these source files as the approved originals.
 The concept image must not be used as a page screenshot, hero replacement, or source of
 invented copy, product count, price, or iconography.
 
+## AVAL unboxing prototype assets
+
+These foreground-only assets are approved for the local AVAL Hero prototype. Each
+file contains a real alpha channel; the cream background, gradients, copy, and CTA
+remain owned by the website layer.
+
+| Public path | Approved source | Role | Status |
+| --- | --- | --- | --- |
+| `assets/aval/sealed-box.png` | `ChatGPT Image 2026年9月6日 上午03_48_08.png` | Sealed kraft mailer and HELLO seal | local prototype / used |
+| `assets/aval/peeled-box.webp` | Image edit based on the exact `assets/aval/sealed-box.png` composition | Same-size matched box frame; only the HELLO seal is partially peeled | local prototype / used |
+| `assets/aval/open-box.webp` | Layout from `03_53_37`, complete box structure from corrected `03_59_34`, card artwork from `04_16_33` | Composite reference of card left and pouch right | local prototype / retained reference |
+| `assets/aval/open-box-empty.webp` | Layer-separated derivative of the approved complete open box | Empty open box controlled by the GSAP timeline | local prototype / used |
+| `assets/aval/thank-you-card.webp` | `ChatGPT Image 2026年9月6日 上午04_16_33.png` | Independent illustrated Thank You card layer | local prototype / used |
+| `assets/aval/frosted-pouch-base.webp` | Alpha-mask derivative of `frosted-pouch-empty.webp` | Pure-white pouch silhouette used as the lowest parallax backing layer | local prototype / used |
+| `assets/aval/frosted-pouch-empty.webp` | Image-edit derivative of the approved frosted pouch reference, with the bracelet removed | Standalone semi-transparent frosted pouch with dusty-pink cork-stopper graphic; no bracelet baked in; top layer uses multiply blending | local prototype / used |
+| `assets/aval/frosted-pouch.webp` | Corrected `03_53_37` + `03_59_34` references | Jar-shaped frosted pouch reference with dusty-pink cork-stopper graphic retained | local prototype / retained reference |
+| `assets/aval/pouch-interior-mask.svg` | Handcrafted inner-body silhouette aligned to the frosted pouch | Retained geometry reference; the active Hero no longer uses a blur mask | local prototype / retained reference |
+| `assets/aval/pouch-exterior-mask.svg` | Inverse of the inner-body silhouette | Retained geometry reference; the active Hero now uses one unmasked clear bracelet layer | local prototype / retained reference |
+| `assets/aval/bracelet.webp` | Corrected `ChatGPT Image 2026年9月6日 上午03_59_34.png` | Complete final bracelet | local prototype / used |
+
+`ChatGPT Image 2026年9月6日 上午03_53_18.png` is explicitly excluded from
+the AVAL prototype and was not used for the final bracelet or open-box assets.
+
 ## Explicit exclusions
 
 - Unselected Instagram captures remain outside `public/` and must not be rendered

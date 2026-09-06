@@ -1,4 +1,4 @@
-export type MyShipProductStatus = 'available' | 'soldout' | 'unknown';
+export type MyShipProductStatus = 'available' | 'soldout' | 'removed' | 'archived' | 'unknown';
 
 export type MyShipProduct = {
   id: string;
@@ -17,6 +17,9 @@ export type MyShipProduct = {
   skuId: string | null;
   excluded: boolean;
   exclusionReason?: string;
+  missingSince?: string | null;
+  removedAt?: string;
+  archivedAt?: string;
 };
 
 export type MyShipDataset = {
@@ -27,6 +30,9 @@ export type MyShipDataset = {
     totalVariants: number;
     available: number;
     soldout: number;
+    removed: number;
+    archived: number;
+    unknown: number;
     excluded: number;
     withImage: number;
     withoutImage: number;

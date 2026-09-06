@@ -278,6 +278,439 @@ h2 {
   margin-left: auto;
 }
 
+.aval-hero {
+  position: relative;
+  min-height: calc(100svh - 70px);
+  background: transparent;
+}
+
+.aval-layout {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  min-height: calc(100svh - 70px);
+  align-content: center;
+  gap: 18px;
+  padding-block: 36px 28px;
+}
+
+.aval-copy {
+  position: relative;
+  z-index: 3;
+  min-width: 0;
+  text-align: center;
+}
+
+.aval-eyebrow {
+  color: rgba(101, 74, 59, 0.62);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 0.67rem;
+  letter-spacing: 0.2em;
+}
+
+.aval-heading {
+  margin-top: 11px;
+  color: var(--brown-deep);
+  font-size: clamp(1.75rem, 8vw, 3.2rem);
+  font-weight: 650;
+  letter-spacing: -0.065em;
+  line-height: 1.28;
+}
+
+.aval-heading span {
+  display: block;
+  white-space: nowrap;
+}
+
+.aval-lede {
+  margin-top: 12px;
+  color: rgba(93, 73, 63, 0.72);
+  font-size: 0.92rem;
+  letter-spacing: 0.04em;
+  line-height: 1.8;
+}
+
+.aval-primary-action {
+  min-height: 46px;
+  margin-top: 15px;
+}
+
+.aval-player {
+  width: min(100%, 480px);
+  min-width: 0;
+  margin-inline: auto;
+}
+
+.aval-stage {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 0.92;
+  overflow: visible;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  isolation: isolate;
+}
+
+.aval-stage::before {
+  display: none;
+}
+
+.aval-object {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  width: 88%;
+  height: 88%;
+  object-fit: contain;
+  opacity: 0;
+  transform: translate(-50%, -46%) scale(0.9);
+  filter: drop-shadow(0 18px 18px rgba(74, 49, 33, 0.15));
+  pointer-events: none;
+  transition: opacity 620ms ease, transform 900ms cubic-bezier(0.2, 0.75, 0.18, 1), filter 620ms ease;
+  will-change: opacity, transform;
+}
+
+.aval-shadow {
+  display: none;
+}
+
+.aval-player[data-state='preload'] .aval-sealed,
+.aval-player[data-state='sealed'] .aval-sealed,
+.aval-player[data-state='peel'] .aval-peeled,
+.aval-player[data-state='open'] .aval-open,
+.aval-player[data-state='contents'] .aval-open,
+.aval-player[data-state='pouch'] .aval-pouch,
+.aval-player[data-state='take-out'] .aval-pouch,
+.aval-player[data-state='take-out'] .aval-bracelet,
+.aval-player[data-state='final'] .aval-bracelet {
+  opacity: 1;
+}
+
+.aval-player[data-state='preload'] .aval-sealed,
+.aval-player[data-state='sealed'] .aval-sealed {
+  transform: translate(-50%, -47%) scale(0.92);
+  animation: aval-breathe 4s ease-in-out infinite;
+}
+
+.aval-player[data-state='peel'] .aval-peeled {
+  transform: translate(-50%, -49%) scale(0.95) rotate(-0.8deg);
+}
+
+.aval-player[data-state='open'] .aval-open {
+  transform: translate(-50%, -50%) scale(0.83);
+}
+
+.aval-player[data-state='contents'] .aval-open {
+  transform: translate(-50%, -51%) scale(0.9);
+}
+
+.aval-pouch {
+  width: 62%;
+  height: 90%;
+}
+
+.aval-player[data-state='pouch'] .aval-pouch {
+  transform: translate(-50%, -50%) scale(0.92);
+}
+
+.aval-player[data-state='pouch'] .aval-open,
+.aval-player[data-state='take-out'] .aval-open {
+  opacity: 0.18;
+  transform: translate(-76%, -36%) scale(0.55);
+  filter: blur(0.8px) drop-shadow(0 12px 14px rgba(74, 49, 33, 0.1));
+}
+
+.aval-bracelet {
+  width: 66%;
+  height: 90%;
+}
+
+.aval-player[data-state='take-out'] .aval-pouch {
+  opacity: 0.35;
+  transform: translate(-78%, -47%) scale(0.7) rotate(-3deg);
+}
+
+.aval-player[data-state='take-out'] .aval-bracelet {
+  transform: translate(-22%, -51%) scale(0.75) rotate(2deg);
+}
+
+.aval-player[data-state='final'] .aval-bracelet {
+  transform: translate(-50%, -50%) scale(0.88);
+  animation: aval-sway 4.8s ease-in-out infinite;
+}
+
+.aval-player[data-state='final'] .aval-shadow {
+  width: 38%;
+  opacity: 0.4;
+}
+
+.aval-state-copy {
+  display: flex;
+  min-height: 58px;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 4px 5px;
+  text-align: left;
+}
+
+.aval-state-copy > span {
+  color: var(--pink);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.25rem;
+}
+
+.aval-state-copy div {
+  display: grid;
+  line-height: 1.35;
+}
+
+.aval-state-copy strong {
+  color: var(--brown-deep);
+  font-size: 0.9rem;
+  font-weight: 650;
+}
+
+.aval-state-copy small {
+  color: rgba(93, 73, 63, 0.55);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 0.66rem;
+  letter-spacing: 0.07em;
+}
+
+.aval-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.aval-controls button {
+  display: grid;
+  min-width: 38px;
+  min-height: 38px;
+  place-items: center;
+  border: 1px solid rgba(101, 74, 59, 0.16);
+  border-radius: 999px;
+  background: rgba(255, 253, 249, 0.72);
+  transition: background 180ms ease, opacity 180ms ease, transform 180ms ease;
+}
+
+.aval-controls button:hover,
+.aval-controls button:focus-visible {
+  background: var(--cream);
+  transform: translateY(-1px);
+}
+
+.aval-controls button:disabled {
+  cursor: not-allowed;
+  opacity: 0.3;
+}
+
+.aval-progress {
+  display: flex;
+  flex: 1;
+  gap: 4px;
+}
+
+.aval-progress span {
+  flex: 1;
+  height: 3px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(101, 74, 59, 0.14);
+}
+
+.aval-progress span.is-active {
+  background: var(--pink);
+}
+
+.aval-controls .aval-play-toggle {
+  min-width: 52px;
+  padding-inline: 10px;
+  font-size: 0.72rem;
+}
+
+.aval-static-fallback {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  gap: 8px;
+  color: var(--brown);
+  text-align: center;
+}
+
+.aval-static-fallback span {
+  font-size: 0.74rem;
+  letter-spacing: 0.18em;
+}
+
+.aval-static-fallback strong {
+  font-size: 1.25rem;
+}
+
+.aval-ambient {
+  position: absolute;
+  border: 1px solid rgba(101, 74, 59, 0.07);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.aval-ambient-one {
+  top: 8%;
+  right: -70px;
+  width: 190px;
+  height: 190px;
+}
+
+.aval-ambient-two {
+  bottom: 12%;
+  left: -50px;
+  width: 130px;
+  height: 130px;
+}
+
+@keyframes aval-breathe {
+  0%, 100% { transform: translate(-50%, -47%) scale(0.92); }
+  50% { transform: translate(-50%, -48%) scale(0.935); }
+}
+
+@keyframes aval-sway {
+  0%, 100% { transform: translate(-50%, -50%) scale(0.88) rotate(-0.8deg); }
+  50% { transform: translate(-50%, -51%) scale(0.89) rotate(0.8deg); }
+}
+
+/* GSAP owns the unboxing choreography; these layers must not inherit the old CSS state transitions. */
+.aval-gsap-object {
+  animation: none !important;
+  transition: none;
+  transform: none;
+}
+
+.gsap-sealed,
+.gsap-peeled {
+  width: 88%;
+  height: 88%;
+}
+
+.gsap-open {
+  width: 84%;
+  height: 92%;
+}
+
+.gsap-card {
+  z-index: 7;
+  width: 34%;
+  height: 56%;
+  filter: drop-shadow(0 13px 13px rgba(74, 49, 33, 0.16));
+}
+
+.gsap-pouch-base {
+  z-index: 3;
+  width: 62%;
+  height: 90%;
+  filter: none;
+}
+
+.gsap-pouch {
+  z-index: 6;
+  width: 62%;
+  height: 90%;
+  mix-blend-mode: multiply;
+}
+
+.gsap-pouch-bracelet-layer {
+  z-index: 4;
+  width: 62%;
+  height: 90%;
+  filter: none;
+  /* Match the pouch layers' centre origin while they move as one object. */
+  transform-origin: 50% 50%;
+}
+
+.gsap-bracelet-static {
+  position: absolute;
+  top: 0;
+  left: -3.225%;
+  width: 106.45%;
+  height: 100%;
+  max-width: none;
+  object-fit: contain;
+  transform-origin: 50% 8%;
+  pointer-events: none;
+}
+
+.gsap-bracelet-static,
+.aval-live-bracelet {
+  filter: drop-shadow(0 18px 18px rgba(74, 49, 33, 0.18));
+}
+
+.aval-primary-action:disabled {
+  cursor: wait;
+  opacity: 0.76;
+}
+
+.aval-presence {
+  position: absolute;
+  z-index: 8;
+  top: 50%;
+  left: 50%;
+  width: 66%;
+  height: 90%;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.88);
+  transform-origin: 50% 50%;
+  pointer-events: none;
+  touch-action: pan-y;
+  transition: none;
+}
+
+.aval-presence.is-active.is-ready {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.aval-presence-motion {
+  width: 100%;
+  height: 100%;
+  transform-origin: 50% 8%;
+  will-change: transform;
+}
+
+.aval-live-bracelet {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+.aval-touch-hint {
+  position: absolute;
+  right: 50%;
+  bottom: 4%;
+  padding: 5px 10px;
+  border: 1px solid rgba(101, 74, 59, 0.11);
+  border-radius: 999px;
+  background: rgba(255, 253, 249, 0.76);
+  color: rgba(101, 74, 59, 0.63);
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  transform: translateX(50%);
+  pointer-events: none;
+  animation: aval-hint-in 500ms ease both;
+}
+
+@keyframes aval-hint-in {
+  from { opacity: 0; transform: translate(50%, 4px); }
+  to { opacity: 1; transform: translate(50%, 0); }
+}
+
 .hero {
   position: relative;
   min-height: calc(90svh - 70px);
@@ -795,6 +1228,8 @@ h2 {
   scroll-snap-type: x mandatory;
   scrollbar-width: thin;
   scrollbar-color: rgba(101, 76, 64, 0.32) transparent;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 34px, #000 calc(100% - 34px), transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0, #000 34px, #000 calc(100% - 34px), transparent 100%);
 }
 
 .product-scroller::-webkit-scrollbar {
@@ -1856,6 +2291,49 @@ h2 {
   }
 }
 
+@media (min-width: 700px) {
+  .aval-layout {
+    grid-template-columns: minmax(260px, 0.82fr) minmax(400px, 1.18fr);
+    align-items: center;
+    gap: clamp(28px, 5vw, 76px);
+    padding-block: 48px;
+  }
+
+  .aval-copy {
+    text-align: left;
+  }
+
+  .aval-heading {
+    font-size: clamp(1.9rem, 4vw, 3.3rem);
+  }
+
+  .aval-player {
+    width: min(100%, 620px);
+  }
+
+  .aval-stage {
+    aspect-ratio: 1 / 0.96;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+}
+
+@media (min-width: 980px) {
+  .aval-layout {
+    grid-template-columns: minmax(360px, 0.78fr) minmax(520px, 1.22fr);
+  }
+
+  .aval-lede {
+    margin-top: 22px;
+    font-size: 1.02rem;
+  }
+
+  .aval-primary-action {
+    margin-top: 26px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -1867,5 +2345,9 @@ h2 {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  .aval-player[data-reduced-motion='true'] .aval-bracelet {
+    animation: none;
   }
 }
