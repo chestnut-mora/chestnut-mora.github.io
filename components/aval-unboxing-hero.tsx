@@ -7,6 +7,15 @@ import type { AvalStateId } from '@/data/aval';
 
 type AvalMotionState = 'AVAL_IDLE' | 'AVAL_TOUCH_LEFT' | 'AVAL_TOUCH_RIGHT' | 'AVAL_TOUCH_CENTER' | 'AVAL_SETTLE';
 
+const AVAL_PRELOAD_ASSETS = [
+  '/assets/aval/peeled-box.webp',
+  '/assets/aval/open-box-empty.webp',
+  '/assets/aval/thank-you-card.webp',
+  '/assets/aval/frosted-pouch-base.webp',
+  '/assets/aval/frosted-pouch-empty.webp',
+  '/assets/aval/bracelet.webp',
+];
+
 function AvalBraceletPresence({ active, onReady }: { active: boolean; onReady?: () => void }) {
   const rootRef = useRef<HTMLDivElement>(null);
   const motionRef = useRef<HTMLDivElement>(null);
@@ -98,7 +107,7 @@ function AvalBraceletPresence({ active, onReady }: { active: boolean; onReady?: 
           alt=""
           width={702}
           height={1200}
-          priority
+          loading="lazy"
           onLoad={() => {
             setAvalReady(true);
             onReady?.();
@@ -129,6 +138,30 @@ export function AvalUnboxingHero() {
   const [assetError, setAssetError] = useState(false);
 
   const markAvalReady = useCallback(() => setAvalLiveReady(true), []);
+
+  useEffect(() => {
+    const preload = () => {
+      AVAL_PRELOAD_ASSETS.forEach((src) => {
+        const image = new window.Image();
+        image.decoding = 'async';
+        image.src = src;
+      });
+    };
+
+    let idleId: number | null = null;
+    let timeoutId: number | null = null;
+    const requestIdle = (window as Window & { requestIdleCallback?: typeof window.requestIdleCallback }).requestIdleCallback;
+    if (typeof requestIdle === 'function') {
+      idleId = requestIdle.call(window, preload, { timeout: 1200 });
+    } else {
+      timeoutId = Number(globalThis.setTimeout(preload, 250));
+    }
+
+    return () => {
+      if (idleId !== null) window.cancelIdleCallback(idleId);
+      if (timeoutId !== null) globalThis.clearTimeout(timeoutId);
+    };
+  }, []);
 
   useLayoutEffect(() => {
     const elements = [sealedRef.current, peeledRef.current, openRef.current, cardRef.current, pouchBaseRef.current, pouchRef.current, braceletRef.current, pouchBraceletRef.current];
@@ -207,13 +240,13 @@ export function AvalUnboxingHero() {
           <div className="aval-stage">
             {assetError ? <span className="aval-static-fallback"><span>栗子森林</span><strong>你的萌栗已送達 ♡</strong></span> : <>
               <Image ref={sealedRef} className="aval-object aval-gsap-object gsap-sealed" src="/assets/aval/sealed-box.png" alt="封好的栗子森林萌粒手機鍊開箱盒" width={1536} height={1024} priority onError={() => setAssetError(true)} />
-              <Image ref={peeledRef} className="aval-object aval-gsap-object gsap-peeled" src="/assets/aval/peeled-box.webp" alt="HELLO 封口貼半撕開的栗子森林萌粒手機鍊包裝盒" width={1536} height={1024} priority onError={() => setAssetError(true)} />
-              <Image ref={openRef} className="aval-object aval-gsap-object gsap-open" src="/assets/aval/open-box-empty.webp" alt="完整打開的栗子森林萌粒手機鍊開箱盒" width={906} height={1199} priority onError={() => setAssetError(true)} />
-              <Image ref={cardRef} className="aval-object aval-gsap-object gsap-card" src="/assets/aval/thank-you-card.webp" alt="栗子森林萌粒手機鍊包裝內的原創手繪 Thank You 感謝小卡" width={800} height={999} priority onError={() => setAssetError(true)} />
-              <Image ref={pouchBaseRef} className="aval-object aval-gsap-object gsap-pouch-base" src="/assets/aval/frosted-pouch-base.webp" alt="" aria-hidden="true" width={679} height={1200} priority onError={() => setAssetError(true)} />
-              <Image ref={pouchRef} className="aval-object aval-gsap-object gsap-pouch" src="/assets/aval/frosted-pouch-empty.webp" alt="保留淡粉棕色軟木塞圖樣的萌粒手機鍊霧面包裝袋" width={679} height={1200} priority onError={() => setAssetError(true)} />
+              <Image ref={peeledRef} className="aval-object aval-gsap-object gsap-peeled" src="/assets/aval/peeled-box.webp" alt="HELLO 封口貼半撕開的栗子森林萌粒手機鍊包裝盒" width={1536} height={1024} loading="lazy" onError={() => setAssetError(true)} />
+              <Image ref={openRef} className="aval-object aval-gsap-object gsap-open" src="/assets/aval/open-box-empty.webp" alt="完整打開的栗子森林萌粒手機鍊開箱盒" width={906} height={1199} loading="lazy" onError={() => setAssetError(true)} />
+              <Image ref={cardRef} className="aval-object aval-gsap-object gsap-card" src="/assets/aval/thank-you-card.webp" alt="栗子森林萌粒手機鍊包裝內的原創手繪 Thank You 感謝小卡" width={800} height={999} loading="lazy" onError={() => setAssetError(true)} />
+              <Image ref={pouchBaseRef} className="aval-object aval-gsap-object gsap-pouch-base" src="/assets/aval/frosted-pouch-base.webp" alt="" aria-hidden="true" width={679} height={1200} loading="lazy" onError={() => setAssetError(true)} />
+              <Image ref={pouchRef} className="aval-object aval-gsap-object gsap-pouch" src="/assets/aval/frosted-pouch-empty.webp" alt="保留淡粉棕色軟木塞圖樣的萌粒手機鍊霧面包裝袋" width={679} height={1200} loading="lazy" onError={() => setAssetError(true)} />
               <div ref={pouchBraceletRef} className="aval-object aval-gsap-object gsap-pouch-bracelet-layer">
-                <Image ref={braceletRef} className="gsap-bracelet-static" src="/assets/aval/bracelet.webp" alt="栗子森林萌粒手機鍊與角色吊飾完整展示" width={702} height={1200} priority onError={() => setAssetError(true)} />
+                <Image ref={braceletRef} className="gsap-bracelet-static" src="/assets/aval/bracelet.webp" alt="栗子森林萌粒手機鍊與角色吊飾完整展示" width={702} height={1200} loading="lazy" onError={() => setAssetError(true)} />
               </div>
               <AvalBraceletPresence active={avalActive && phase === 'final'} onReady={markAvalReady} />
             </>}

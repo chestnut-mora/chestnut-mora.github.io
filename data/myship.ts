@@ -16,6 +16,8 @@ export type MyShipProduct = {
   variantId: string | null;
   specId: string | null;
   skuId: string | null;
+  lastmod?: string | null;
+  seoRevision?: string;
   excluded: boolean;
   exclusionReason?: string;
   missingSince?: string | null;

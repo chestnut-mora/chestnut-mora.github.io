@@ -252,7 +252,7 @@ async function main() {
       syncedAt,
       stats,
       products,
-    });
+    }, { previousProducts: previous?.products || [] });
     validateDataset(dataset);
 
     if (previous && JSON.stringify(comparableDataset(previous)) === JSON.stringify(comparableDataset(dataset))) {

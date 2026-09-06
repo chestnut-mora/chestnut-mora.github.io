@@ -5,6 +5,7 @@ import type { MyShipProductStatus } from './myship';
 export const SITE_ORIGIN = 'https://chestnut-mora.github.io';
 export const BRAND_NAME = 'Chestnut Mora';
 export const BRAND_NAME_ZH = '栗子森林';
+export const PRODUCT_SCHEMA_CATEGORY = '4550';
 
 export type SeoProduct = {
   id: string;
@@ -90,7 +91,7 @@ export function buildProductJsonLd(product: SeoProduct) {
       '@type': 'Brand',
       name: BRAND_NAME,
     },
-    category: '角色手作萌粒手機鍊與手機吊飾',
+    category: PRODUCT_SCHEMA_CATEGORY,
     material: '串珠、鍊條與角色配件',
     ...(offer ? { offers: offer } : {}),
     ...(product.status === 'removed' || product.status === 'archived'
@@ -112,7 +113,7 @@ export function buildProductJsonLd(product: SeoProduct) {
         '@type': 'BreadcrumbList',
         itemListElement: [
           { '@type': 'ListItem', position: 1, name: BRAND_NAME_ZH, item: `${SITE_ORIGIN}/` },
-          { '@type': 'ListItem', position: 2, name: '所有萌栗', item: `${SITE_ORIGIN}/#collection` },
+          { '@type': 'ListItem', position: 2, name: '所有萌栗', item: `${SITE_ORIGIN}/products/` },
           { '@type': 'ListItem', position: 3, name: product.name, item: productUrl },
         ],
       },
@@ -146,7 +147,8 @@ export function buildHomepageJsonLd() {
       },
       {
         '@type': 'ItemList',
-        '@id': `${SITE_ORIGIN}/#collection`,
+        '@id': `${SITE_ORIGIN}/products/#item-list`,
+        url: `${SITE_ORIGIN}/products/`,
         name: '所有萌栗',
         numberOfItems: availableProducts.length,
         itemListOrder: 'https://schema.org/ItemListUnordered',

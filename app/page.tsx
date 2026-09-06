@@ -4,6 +4,7 @@
 
 import { useEffect, useRef, useState, type KeyboardEvent, type MouseEvent, type PointerEvent, type ReactNode } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import {
   ArrowRight,
   ArrowUpRight,
@@ -538,9 +539,14 @@ export default function Home() {
                 title={<>今天想帶哪一條出門？</>}
                 description="每一條萌栗，都把喜歡的角色與手作搭配放進日常。"
               />
-              <a className="desktop-text-link" href={social.instagramUrl} target="_blank" rel="noopener noreferrer">
-                查看最新貼文 <ArrowUpRight size={16} strokeWidth={1.8} />
-              </a>
+              <div className="collection-heading-links">
+                <Link className="text-link" href="/products/">
+                  所有萌栗 <ArrowUpRight size={16} strokeWidth={1.8} />
+                </Link>
+                <a className="desktop-text-link" href={social.instagramUrl} target="_blank" rel="noopener noreferrer">
+                  查看最新貼文 <ArrowUpRight size={16} strokeWidth={1.8} />
+                </a>
+              </div>
             </div>
 
             <section
