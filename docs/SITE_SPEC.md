@@ -3,7 +3,7 @@
 ## Status and release gate
 
 - Product: 栗子森林 Chestnut Mora official brand homepage.
-- Routes: `/` plus statically generated `/products/[slug]` detail pages.
+- Routes: `/`, `/products`, plus statically generated `/products/[slug]` detail pages.
 - Experience: public-ready design with a local Preview and public GitHub Pages release.
 - Release target: `https://chestnut-mora.github.io/`, from the public
   `chestnut-mora/chestnut-mora.github.io` repository.
@@ -190,11 +190,14 @@ and quiet hover/tap feedback. The mobile menu must be keyboard accessible and ex
 `aria-controls`.
 
 Not allowed: scroll hijacking, auto-playing music, aggressive parallax, cursor effects,
-continuous floating, bouncing or pulsing CTAs, auto-scrolling carousels, large loading
-animations, or unnecessary 3D.
+continuous floating, bouncing or pulsing CTAs, large loading animations, or
+unnecessary 3D. The approved image-led Hero carousel is the only auto-advancing
+carousel; it advances every 3.5 seconds and remains manually swipeable.
 
-When `prefers-reduced-motion: reduce` is active, remove non-essential animation and
-smooth scrolling.
+The unboxing choreography remains opt-in and starts only after the visitor presses its
+button. Do not skip directly to `final` or disable the final AVAL interaction merely
+because `prefers-reduced-motion: reduce` is active. Other non-essential decorative
+transitions and smooth scrolling may still be reduced.
 
 ## Accessibility and semantics
 
@@ -208,13 +211,13 @@ smooth scrolling.
 
 ## Metadata and structured data
 
-Title: `栗子森林 Chestnut Mora｜正版角色手作萌栗手機鍊`
+Title: `栗子森林 Chestnut Mora｜正版泡泡瑪特 POP MART 手作萌粒手機鍊`
 
-Meta description: `栗子森林 Chestnut Mora，以正版角色搭配串珠與配件，手工製作一條條獨特萌栗，把喜歡的小角色掛進每天的日常。`
+Meta description: `栗子森林 Chestnut Mora，以台灣原創設計理念進行手作搭配，將泡泡瑪特（POP MART）正版 IP 角色與串珠、配件組合成獨特的萌粒（POP BEAN）手機鍊與手機吊飾；在栗子森林，我們稱這些陪伴日常的小收藏為「萌栗」。`
 
-Open Graph title: `栗子森林 Chestnut Mora`
+Open Graph title: `栗子森林 Chestnut Mora｜台灣手作｜泡泡瑪特 POP MART 萌粒手機鍊`
 
-Open Graph description: `把喜歡的小角色，掛進每天的日常。`
+Open Graph description: `正版角色 × 手作搭配，把喜歡的小角色做成可以掛在手機與包包上的萌栗手機鍊，每一條都獨一無二。`
 
 Use `summary_large_image` for Twitter/X when an approved OG image is available. The
 specified Hero may be used as OG image only after its production URL/path is stable.
