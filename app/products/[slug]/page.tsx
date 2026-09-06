@@ -34,8 +34,8 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
 
   const productUrl = getProductUrl(product);
   const productTitle = product.status === 'available'
-    ? `${product.name}｜萌粒手機鍊｜${BRAND_NAME_ZH} ${BRAND_NAME}`
-    : `${product.name}｜歷代萌粒手機鍊｜${BRAND_NAME_ZH} ${BRAND_NAME}`;
+    ? `${product.name}｜泡泡瑪特 POP MART 萌粒手機鍊｜${BRAND_NAME_ZH} ${BRAND_NAME}`
+    : `${product.name}｜絕版泡泡瑪特 POP MART 萌粒手機鍊｜${BRAND_NAME_ZH} ${BRAND_NAME}`;
   return {
     title: productTitle,
     description: getProductDescriptionForMetadata(product),

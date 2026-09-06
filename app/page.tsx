@@ -512,7 +512,7 @@ export default function Home() {
                 <div className="promise-icon"><ShieldCheck size={22} strokeWidth={1.6} /></div>
                 <span className="promise-number">01</span>
                 <h3>正版角色</h3>
-                <p>以正版角色為萌栗的主角，讓喜歡可以安心收藏。</p>
+                <p>以正版泡泡瑪特角色為萌栗的主角，讓喜歡可以安心收藏。</p>
               </article>
               <article className="promise-card promise-card-sage">
                 <div className="promise-icon"><Sparkles size={22} strokeWidth={1.6} /></div>
