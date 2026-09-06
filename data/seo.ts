@@ -1,4 +1,5 @@
 import dataset from './myship-seo.json';
+import { faqItems } from './faq';
 import type { MyShipProductStatus } from './myship';
 
 export const SITE_ORIGIN = 'https://chestnut-mora.github.io';
@@ -153,6 +154,18 @@ export function buildHomepageJsonLd() {
           '@type': 'ListItem',
           position: index + 1,
           item: { '@id': `${getProductUrl(product)}#product` },
+        })),
+      },
+      {
+        '@type': 'FAQPage',
+        '@id': `${SITE_ORIGIN}/#faq`,
+        mainEntity: faqItems.map((item) => ({
+          '@type': 'Question',
+          name: item.question,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: item.answer.join('\n\n'),
+          },
         })),
       },
       ...productNodes,
