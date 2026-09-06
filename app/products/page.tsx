@@ -92,7 +92,7 @@ export default function ProductsPage() {
     <div className="product-page-shell product-index-shell">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }} />
       <header className="product-page-header">
-        <a className="product-page-brand" href="/" aria-label="回到栗子森林首頁">
+        <a className="product-page-brand" href="/#top" aria-label="回到栗子森林首頁">
           <span className="product-page-brand-name">{BRAND_NAME_ZH}</span>
           <span className="product-page-brand-english">{BRAND_NAME.toUpperCase()}</span>
         </a>
@@ -103,7 +103,7 @@ export default function ProductsPage() {
 
       <main className="product-page-main">
         <nav className="product-index-breadcrumb" aria-label="麵包屑導覽">
-          <a href="/">首頁</a>
+          <a href="/#top">首頁</a>
           <span aria-hidden="true">/</span>
           <span>所有萌栗</span>
         </nav>
@@ -119,7 +119,7 @@ export default function ProductsPage() {
               <p className="eyebrow">NOW IN THE FOREST</p>
               <h2 id="current-products-title">目前萌栗</h2>
             </div>
-            <a className="product-index-back" href="/"><ArrowLeft size={15} strokeWidth={1.8} /> 回到首頁</a>
+            <a className="product-index-back" href="/#top"><ArrowLeft size={15} strokeWidth={1.8} /> 回到首頁</a>
           </div>
           {currentProducts.length > 0 ? (
             <div className="product-index-grid">
