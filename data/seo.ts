@@ -31,7 +31,8 @@ export function getProductUrl(product: SeoProduct) {
 }
 
 export function getPreferredProductImage(product: SeoProduct) {
-  return product.image || product.sourceImageUrl || null;
+  const localImage = product.slug ? `/assets/products/${product.slug}.webp` : null;
+  return localImage || product.image || product.sourceImageUrl || null;
 }
 
 export function getPreferredProductImageAbsolute(product: SeoProduct) {

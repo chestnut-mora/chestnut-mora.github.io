@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from 'react';
 const PRODUCT_PLACEHOLDER_IMAGE = '/assets/brand/logo-brown.png';
 
 type ProductImageRecord = {
+  slug?: string;
   image: string | null;
   sourceImageUrl: string | null;
 };
@@ -19,7 +20,8 @@ type MyShipProductImageProps = {
 };
 
 function uniqueImageSources(product: ProductImageRecord) {
-  return Array.from(new Set([product.image, product.sourceImageUrl, PRODUCT_PLACEHOLDER_IMAGE].filter(Boolean))) as string[];
+  const localImage = product.slug ? `/assets/products/${product.slug}.webp` : null;
+  return Array.from(new Set([localImage, product.image, product.sourceImageUrl, PRODUCT_PLACEHOLDER_IMAGE].filter(Boolean))) as string[];
 }
 
 export function MyShipProductImage({ product, alt, className, loading = 'lazy' }: MyShipProductImageProps) {
