@@ -632,7 +632,7 @@ export default function Home() {
                 </figure>
                 <figure className="lifestyle-small lifestyle-small-forest image-reveal">
                   <Image
-                    src="/assets/hero/hero-forest.png"
+                    src="/assets/hero/hero-forest.webp"
                   alt="兩只編織包上掛著暖色角色萌粒手機鍊，場景在戶外果園裡"
                     width="1080"
                     height="1350"
@@ -682,7 +682,7 @@ export default function Home() {
             <div className="detail-images">
               <figure className="detail-image image-reveal">
                 <Image
-                  src="/assets/details/detail-pink.png"
+                  src="/assets/details/detail-pink.webp"
                   alt="粉色珠珠、花朵配件與角色公仔組成的萌粒手機鍊細節"
                   width="1080"
                   height="1350"
@@ -692,7 +692,7 @@ export default function Home() {
               </figure>
               <figure className="detail-image image-reveal">
                 <Image
-                  src="/assets/products/product-blue.png"
+                  src="/assets/products/product-blue.webp"
                   alt="透明與藍色珠珠組成的萌粒手機鍊配色細節"
                   width="1080"
                   height="1350"
@@ -702,7 +702,7 @@ export default function Home() {
               </figure>
               <figure className="detail-image image-reveal">
                 <Image
-                  src="/assets/products/product-color.png"
+                  src="/assets/products/product-color.webp"
                   alt="繽紛珠珠與雙角色小配件組成的萌粒手機鍊細節"
                   width="1080"
                   height="1350"
@@ -712,7 +712,7 @@ export default function Home() {
               </figure>
               <figure className="detail-image image-reveal">
                 <Image
-                  src="/assets/details/detail-night.png"
+                  src="/assets/details/detail-night.webp"
                   alt="夜晚氛圍中的萌粒手機鍊角色、珠珠與掛點細節"
                   width="1080"
                   height="1350"
@@ -864,11 +864,11 @@ export default function Home() {
                 <figcaption>little moments</figcaption>
               </figure>
               <figure className="ig-photo ig-photo-two">
-                <Image src="/assets/products/product-color.png" alt="繽紛彩色珠珠萌栗" width="1080" height="1350" loading="lazy" decoding="async" />
+                <Image src="/assets/products/product-color.webp" alt="繽紛彩色珠珠萌栗" width="1080" height="1350" loading="lazy" decoding="async" />
                 <figcaption>with you ♡</figcaption>
               </figure>
               <figure className="ig-photo ig-photo-three">
-                <Image src="/assets/products/product-night.png" alt="夜空氛圍中的藍綠色萌栗" width="1080" height="1350" loading="lazy" decoding="async" />
+                <Image src="/assets/products/product-night.webp" alt="夜空氛圍中的藍綠色萌栗" width="1080" height="1350" loading="lazy" decoding="async" />
                 <figcaption>more good days</figcaption>
               </figure>
             </div>

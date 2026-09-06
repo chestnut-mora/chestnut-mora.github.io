@@ -335,12 +335,12 @@ stock counts, or inventory numbers.
 
 | Gallery id | Editorial caption | Local image | Instagram post |
 | --- | --- | --- | --- |
-| `instagram-post-03` | 粉色的喜歡 | `assets/instagram/post-03.jpg` | `https://www.instagram.com/chestnut_mora/p/Dc5wUKoHRYi/` |
-| `instagram-post-04` | 柔柔的亮光 | `assets/instagram/post-04.jpg` | `https://www.instagram.com/chestnut_mora/p/Dc5ULxnndDA/` |
-| `instagram-post-05` | 彩虹的一天 | `assets/instagram/post-05.jpg` | `https://www.instagram.com/chestnut_mora/p/Dc3Mgj2HQSv/` |
-| `instagram-post-06` | 甜甜的櫻桃 | `assets/instagram/post-06.jpg` | `https://www.instagram.com/chestnut_mora/p/Dc0lbPEHdeE/` |
-| `instagram-post-07` | 綠意與橘色 | `assets/instagram/post-07.jpg` | `https://www.instagram.com/chestnut_mora/p/Dcx_mOlne1f/` |
-| `instagram-post-08` | 晚安小夜空 | `assets/instagram/post-08.jpg` | `https://www.instagram.com/chestnut_mora/p/DcvT1rWHVrv/` |
+| `instagram-post-03` | 粉色的喜歡 | `assets/instagram/post-03.webp` | `https://www.instagram.com/chestnut_mora/p/Dc5wUKoHRYi/` |
+| `instagram-post-04` | 柔柔的亮光 | `assets/instagram/post-04.webp` | `https://www.instagram.com/chestnut_mora/p/Dc5ULxnndDA/` |
+| `instagram-post-05` | 彩虹的一天 | `assets/instagram/post-05.webp` | `https://www.instagram.com/chestnut_mora/p/Dc3Mgj2HQSv/` |
+| `instagram-post-06` | 甜甜的櫻桃 | `assets/instagram/post-06.webp` | `https://www.instagram.com/chestnut_mora/p/Dc0lbPEHdeE/` |
+| `instagram-post-07` | 綠意與橘色 | `assets/instagram/post-07.webp` | `https://www.instagram.com/chestnut_mora/p/Dcx_mOlne1f/` |
+| `instagram-post-08` | 晚安小夜空 | `assets/instagram/post-08.webp` | `https://www.instagram.com/chestnut_mora/p/DcvT1rWHVrv/` |
 
 ## Reference-only profile notes
 

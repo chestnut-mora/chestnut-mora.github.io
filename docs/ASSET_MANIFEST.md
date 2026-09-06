@@ -43,17 +43,17 @@ public/assets/
 
 | Public path | Original file | Size | Role | Status |
 | --- | --- | --- | --- | --- |
-| `assets/hero/hero-forest.png` | `首頁指定用圖 (9).png` | 1080 × 1350 | Hero lifestyle image; warm forest/market scene | approved / used |
+| `assets/hero/hero-forest.webp` | `首頁指定用圖 (9).png` | 1080 × 1350 | Hero lifestyle image; warm forest/market scene | approved / used |
 | `assets/lifestyle/lifestyle-pool.webp` | `首頁指定用圖 (1).png` | 1086 × 1448 | Lifestyle: hand, phone, water, blue accent | approved / used |
 | `assets/lifestyle/lifestyle-lavender.webp` | `首頁指定用圖 (2).png` | 1122 × 1402 | Lifestyle: bag, flowers, pink/lavender accent | approved / used |
 | `assets/lifestyle/lifestyle-macaron.webp` | `首頁指定用圖 (3).png` | 1122 × 1402 | Product/lifestyle: bag, dessert, pink scene | approved / used |
-| `assets/products/product-sweet.png` | `首頁指定用圖 (5).png` | 1080 × 1350 | Product: pastel sweet / character detail | approved / used |
-| `assets/products/product-color.png` | `首頁指定用圖 (6).png` | 1080 × 1350 | Product: colorful paired charms | approved / used |
-| `assets/details/detail-night.png` | `首頁指定用圖 (7).png` | 1080 × 1350 | Detail: night-themed character and beads | approved / future-ready |
-| `assets/products/product-night.png` | `首頁指定用圖 (8).png` | 1080 × 1350 | Product: night sky / blue-green scene | approved / used |
-| `assets/products/product-blue.png` | `首頁指定用圖 (10).png` | 1080 × 1350 | Product/detail: blue transparent beads | approved / used |
-| `assets/products/product-purple.png` | `首頁指定用圖 (11).png` | 1080 × 1350 | Product/detail: purple floral scene | approved / used |
-| `assets/details/detail-pink.png` | `首頁指定用圖 (4).png` | 1080 × 1350 | Detail: pink beads, flowers, character | approved / used |
+| `assets/products/product-sweet.webp` | `首頁指定用圖 (5).png` | 1080 × 1350 | Product: pastel sweet / character detail | approved / used |
+| `assets/products/product-color.webp` | `首頁指定用圖 (6).png` | 1080 × 1350 | Product: colorful paired charms | approved / used |
+| `assets/details/detail-night.webp` | `首頁指定用圖 (7).png` | 1080 × 1350 | Detail: night-themed character and beads | approved / future-ready |
+| `assets/products/product-night.webp` | `首頁指定用圖 (8).png` | 1080 × 1350 | Product: night sky / blue-green scene | approved / used |
+| `assets/products/product-blue.webp` | `首頁指定用圖 (10).png` | 1080 × 1350 | Product/detail: blue transparent beads | approved / used |
+| `assets/products/product-purple.webp` | `首頁指定用圖 (11).png` | 1080 × 1350 | Product/detail: purple floral scene | approved / used |
+| `assets/details/detail-pink.webp` | `首頁指定用圖 (4).png` | 1080 × 1350 | Detail: pink beads, flowers, character | approved / used |
 
 All listed images are user-provided or explicitly user-approved PNG/JPG files. Retain
 original composition unless responsive cropping is necessary and the main product
@@ -64,34 +64,34 @@ preserving these source files as the approved originals.
 
 | Public path | Source capture | Size | Role | Status |
 | --- | --- | --- | --- | --- |
-| `assets/instagram/post-03.jpg` | `outputs/chestnut_mora/images/post-03.jpg` | 1080 × 1350 | Featured gallery / Hero carousel image | approved / used |
-| `assets/instagram/post-04.jpg` | `outputs/chestnut_mora/images/post-04.jpg` | 1080 × 1350 | Featured gallery / Hero carousel image | approved / used |
-| `assets/instagram/post-05.jpg` | `outputs/chestnut_mora/images/post-05.jpg` | 1080 × 1350 | Featured gallery / Hero carousel image | approved / used |
-| `assets/instagram/post-06.jpg` | `outputs/chestnut_mora/images/post-06.jpg` | 1080 × 1350 | Featured gallery / Hero carousel image | approved / used |
-| `assets/instagram/post-07.jpg` | `outputs/chestnut_mora/images/post-07.jpg` | 1080 × 1350 | Featured gallery / Hero carousel image | approved / used |
-| `assets/instagram/post-08.jpg` | `outputs/chestnut_mora/images/post-08.jpg` | 1080 × 1350 | Featured gallery / Hero carousel image | approved / used |
-| `assets/instagram/post-09.jpg` | `outputs/chestnut_mora/images/post-09.jpg` | 1080 × 1350 | Hero carousel image | approved / used |
-| `assets/instagram/post-10.jpg` | `outputs/chestnut_mora/images/post-10.jpg` | 1080 × 1350 | Hero carousel image | approved / used |
-| `assets/instagram/post-11.jpg` | `outputs/chestnut_mora/images/post-11.jpg` | 1080 × 1350 | Hero carousel image | approved / used |
-| `assets/instagram/post-12.jpg` | `outputs/chestnut_mora/images/post-12.jpg` | 1080 × 1350 | Hero carousel image | approved / used |
-| `assets/instagram/post-13.jpg` | `outputs/chestnut_mora/images/post-13.jpg` | 1122 × 1402 | Hero carousel image | approved / used |
-| `assets/instagram/post-14.jpg` | `outputs/chestnut_mora/images/post-14.jpg` | 1080 × 1350 | Hero carousel image | approved / used |
-| `assets/instagram/post-15.jpg` | `outputs/chestnut_mora/images/post-15.jpg` | 1080 × 1350 | Hero carousel image | approved / used |
-| `assets/instagram/post-16.jpg` | `outputs/chestnut_mora/images/post-16.jpg` | 1080 × 1350 | Hero carousel image | approved / used |
-| `assets/instagram/post-17.jpg` | `outputs/chestnut_mora/images/post-17.jpg` | 1080 × 1350 | Hero carousel image | approved / used |
-| `assets/instagram/post-18.jpg` | `outputs/chestnut_mora/images/post-18.jpg` | 1080 × 1350 | Hero carousel image | approved / used |
-| `assets/instagram/post-19.jpg` | `outputs/chestnut_mora/images/post-19.jpg` | 1080 × 1350 | Hero carousel image | approved / used |
-| `assets/instagram/post-20.jpg` | `outputs/chestnut_mora/images/post-20.jpg` | 1080 × 1350 | Hero carousel image | approved / used |
-| `assets/instagram/post-21.jpg` | `outputs/chestnut_mora/images/post-21.jpg` | 1080 × 1350 | Hero carousel image | approved / used |
-| `assets/instagram/post-22.jpg` | `outputs/chestnut_mora/images/post-22.jpg` | 1092 × 1440 | Hero carousel image | approved / used |
-| `assets/instagram/post-23.jpg` | `outputs/chestnut_mora/images/post-23.jpg` | 1080 × 1350 | Hero carousel image | approved / used |
-| `assets/instagram/post-24.jpg` | `outputs/chestnut_mora/images/post-24.jpg` | 1080 × 1350 | Hero carousel image | approved / used |
-| `assets/instagram/post-25.jpg` | `outputs/chestnut_mora/images/post-25.jpg` | 1080 × 1350 | Hero carousel image | approved / used |
-| `assets/instagram/post-26.jpg` | `outputs/chestnut_mora/images/post-26.jpg` | 1092 × 1440 | Hero carousel image | approved / used |
-| `assets/instagram/post-27.jpg` | `outputs/chestnut_mora/images/post-27.jpg` | 1086 × 1448 | Hero carousel image | approved / used |
-| `assets/instagram/post-28.jpg` | `outputs/chestnut_mora/images/post-28.jpg` | 1080 × 1350 | Hero carousel image | approved / used |
-| `assets/instagram/post-29.jpg` | `outputs/chestnut_mora/images/post-29.jpg` | 1080 × 1350 | Hero carousel image | approved / used |
-| `assets/instagram/post-30.jpg` | `outputs/chestnut_mora/images/post-30.jpg` | 1080 × 1350 | Hero carousel image | approved / used |
+| `assets/instagram/post-03.webp` | `outputs/chestnut_mora/images/post-03.jpg` | 1080 × 1350 | Featured gallery / Hero carousel image | approved / used |
+| `assets/instagram/post-04.webp` | `outputs/chestnut_mora/images/post-04.jpg` | 1080 × 1350 | Featured gallery / Hero carousel image | approved / used |
+| `assets/instagram/post-05.webp` | `outputs/chestnut_mora/images/post-05.jpg` | 1080 × 1350 | Featured gallery / Hero carousel image | approved / used |
+| `assets/instagram/post-06.webp` | `outputs/chestnut_mora/images/post-06.jpg` | 1080 × 1350 | Featured gallery / Hero carousel image | approved / used |
+| `assets/instagram/post-07.webp` | `outputs/chestnut_mora/images/post-07.jpg` | 1080 × 1350 | Featured gallery / Hero carousel image | approved / used |
+| `assets/instagram/post-08.webp` | `outputs/chestnut_mora/images/post-08.jpg` | 1080 × 1350 | Featured gallery / Hero carousel image | approved / used |
+| `assets/instagram/post-09.webp` | `outputs/chestnut_mora/images/post-09.jpg` | 1080 × 1350 | Hero carousel image | approved / used |
+| `assets/instagram/post-10.webp` | `outputs/chestnut_mora/images/post-10.jpg` | 1080 × 1350 | Hero carousel image | approved / used |
+| `assets/instagram/post-11.webp` | `outputs/chestnut_mora/images/post-11.jpg` | 1080 × 1350 | Hero carousel image | approved / used |
+| `assets/instagram/post-12.webp` | `outputs/chestnut_mora/images/post-12.jpg` | 1080 × 1350 | Hero carousel image | approved / used |
+| `assets/instagram/post-13.webp` | `outputs/chestnut_mora/images/post-13.jpg` | 1122 × 1402 | Hero carousel image | approved / used |
+| `assets/instagram/post-14.webp` | `outputs/chestnut_mora/images/post-14.jpg` | 1080 × 1350 | Hero carousel image | approved / used |
+| `assets/instagram/post-15.webp` | `outputs/chestnut_mora/images/post-15.jpg` | 1080 × 1350 | Hero carousel image | approved / used |
+| `assets/instagram/post-16.webp` | `outputs/chestnut_mora/images/post-16.jpg` | 1080 × 1350 | Hero carousel image | approved / used |
+| `assets/instagram/post-17.webp` | `outputs/chestnut_mora/images/post-17.jpg` | 1080 × 1350 | Hero carousel image | approved / used |
+| `assets/instagram/post-18.webp` | `outputs/chestnut_mora/images/post-18.jpg` | 1080 × 1350 | Hero carousel image | approved / used |
+| `assets/instagram/post-19.webp` | `outputs/chestnut_mora/images/post-19.jpg` | 1080 × 1350 | Hero carousel image | approved / used |
+| `assets/instagram/post-20.webp` | `outputs/chestnut_mora/images/post-20.jpg` | 1080 × 1350 | Hero carousel image | approved / used |
+| `assets/instagram/post-21.webp` | `outputs/chestnut_mora/images/post-21.jpg` | 1080 × 1350 | Hero carousel image | approved / used |
+| `assets/instagram/post-22.webp` | `outputs/chestnut_mora/images/post-22.jpg` | 1092 × 1440 | Hero carousel image | approved / used |
+| `assets/instagram/post-23.webp` | `outputs/chestnut_mora/images/post-23.jpg` | 1080 × 1350 | Hero carousel image | approved / used |
+| `assets/instagram/post-24.webp` | `outputs/chestnut_mora/images/post-24.jpg` | 1080 × 1350 | Hero carousel image | approved / used |
+| `assets/instagram/post-25.webp` | `outputs/chestnut_mora/images/post-25.jpg` | 1080 × 1350 | Hero carousel image | approved / used |
+| `assets/instagram/post-26.webp` | `outputs/chestnut_mora/images/post-26.jpg` | 1092 × 1440 | Hero carousel image | approved / used |
+| `assets/instagram/post-27.webp` | `outputs/chestnut_mora/images/post-27.jpg` | 1086 × 1448 | Hero carousel image | approved / used |
+| `assets/instagram/post-28.webp` | `outputs/chestnut_mora/images/post-28.jpg` | 1080 × 1350 | Hero carousel image | approved / used |
+| `assets/instagram/post-29.webp` | `outputs/chestnut_mora/images/post-29.jpg` | 1080 × 1350 | Hero carousel image | approved / used |
+| `assets/instagram/post-30.webp` | `outputs/chestnut_mora/images/post-30.jpg` | 1080 × 1350 | Hero carousel image | approved / used |
 
 ## Reference-only files
 

@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     url: '/',
     images: [
       {
-        url: '/assets/hero/hero-forest.png',
+        url: '/assets/hero/hero-forest.webp',
         width: 1080,
         height: 1350,
         alt: '陽光下的草編袋與暖色系萌栗手機鍊',
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: '栗子森林 Chestnut Mora｜台灣手作｜泡泡瑪特 POP MART 萌粒手機鍊',
     description: '正版角色 × 手作搭配，把喜歡的小角色做成可以掛在手機與包包上的萌栗手機鍊，每一條都獨一無二。',
-    images: ['/assets/hero/hero-forest.png'],
+    images: ['/assets/hero/hero-forest.webp'],
   },
 };
 
