@@ -349,11 +349,12 @@ The captured public profile showed language including `正版萌粒專賣`、`�
 context, but the homepage should use the approved copy above rather than reproducing a
 cluttered bio block or treating it as a policy.
 
-## Unknowns / TODO before production
+## Post-launch notes
 
-- The approved production domain is `https://chestnut-mora.github.io/`; use it for the
-  canonical URL when the public release is live.
-- Confirm the final OG image path and whether the Hero is approved for social sharing.
-- Confirm whether the supplied logo variant should be used as the production favicon.
-- Keep product-specific price, availability, and ordering details in the official
-  Instagram flow rather than adding a second catalog to the homepage.
+- The approved production domain is live at `https://chestnut-mora.github.io/` and is
+  used for canonical URLs, product detail URLs, and the sitemap.
+- The approved Hero asset is used for the site-wide Open Graph and X preview metadata;
+  the supplied brown logo variant is used as the favicon.
+- Product-specific price, availability, and ordering details are synchronized from the
+  official 7-ELEVEN 賣貨便 page. The homepage and product detail pages hand visitors
+  back to that official shop or to Instagram for the current purchase flow.

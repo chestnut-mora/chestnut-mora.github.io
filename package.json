@@ -9,6 +9,7 @@
     "dev": "vinext dev",
     "build": "vinext build",
     "sync:myship": "node scripts/sync-myship.mjs",
+    "generate:seo": "node scripts/seo-assets.mjs",
     "test:myship": "node scripts/test-myship-lifecycle.mjs",
     "start": "wrangler dev --config dist/server/wrangler.json",
     "lint": "oxlint",

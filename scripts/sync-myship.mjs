@@ -4,6 +4,7 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { MYSHIP_CONFIG, hasUnavailableNameSignal } from './myship-config.mjs';
 import { buildMyShipStats, mergeProductLifecycle, MYSHIP_LIFECYCLE_STATUSES } from './myship-lifecycle.mjs';
+import { writeSeoAssets } from './seo-assets.mjs';
 
 const ROOT_DIR = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const OUTPUT_PATH = resolve(ROOT_DIR, 'public/data/myship-products.json');
@@ -245,13 +246,13 @@ async function main() {
     const incomingProducts = normalizeProducts(embeddedProducts, syncedAt);
     const products = mergeProductLifecycle(previous?.products || [], incomingProducts, syncedAt);
     const stats = buildMyShipStats(products);
-    const dataset = {
+    const dataset = await writeSeoAssets({
       source: MYSHIP_CONFIG.source,
       sourceUrl: MYSHIP_CONFIG.sourceUrl,
       syncedAt,
       stats,
       products,
-    };
+    });
     validateDataset(dataset);
 
     if (previous && JSON.stringify(comparableDataset(previous)) === JSON.stringify(comparableDataset(dataset))) {

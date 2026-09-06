@@ -33,6 +33,7 @@ export function mergeProductLifecycle(previousProducts, incomingProducts, synced
       return {
         ...incoming,
         id: previous.id,
+        ...(previous.slug || incoming.slug ? { slug: previous.slug || incoming.slug } : {}),
         status: 'archived',
         missingSince: null,
         archivedAt: previous.archivedAt || syncedAt,
@@ -42,6 +43,7 @@ export function mergeProductLifecycle(previousProducts, incomingProducts, synced
     return {
       ...incoming,
       id: previous?.id || incoming.id,
+      ...(previous?.slug || incoming.slug ? { slug: previous?.slug || incoming.slug } : {}),
       missingSince: null,
     };
   });

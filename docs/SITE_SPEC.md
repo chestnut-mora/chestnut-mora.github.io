@@ -3,7 +3,7 @@
 ## Status and release gate
 
 - Product: 栗子森林 Chestnut Mora official brand homepage.
-- Current route: `/` only.
+- Routes: `/` plus statically generated `/products/[slug]` detail pages.
 - Experience: public-ready design with a local Preview and public GitHub Pages release.
 - Release target: `https://chestnut-mora.github.io/`, from the public
   `chestnut-mora/chestnut-mora.github.io` repository.
@@ -24,7 +24,7 @@ Official homepage
         ↓
 Understand 栗子森林 → Understand 萌栗 → See lifestyle / details
         ↓
-Want to collect → Visit Instagram → View current items / ask / purchase
+Product detail page → Visit official shop / Instagram → View current items / ask / purchase
 ```
 
 Primary CTA: `逛逛最新萌栗` → `https://www.instagram.com/chestnut_mora/`
@@ -78,21 +78,24 @@ anchor id for navigation:
    swipe or drag manually, with no visible carousel indicator or control icons.
 3. `BrandIntro` (`#about`) — what the studio is and why the collection exists.
 4. `WhatIsMengLi` (`#mengli`) — three values: 正版角色、手工搭配、小量收藏.
-5. `FeaturedProducts` (`#collection`) — an image-led set of 4–6 approved Instagram
-   captures in a horizontal swipe; no maintained style or price catalog.
-6. `LifestyleGallery` (`#lifestyle`) — editorial mosaic, not an Instagram grid.
-7. `DetailGrid` — close-up photography plus short editorial notes.
-8. `BrandStory` (`#story`) — brown background, cream text, restrained handwritten accent.
-9. `HowToBuy` (`#how-to-buy`) — three steps and approved Instagram/shop links.
-10. `TrustStrip` — five safe trust statements with simple line icons.
-11. `FAQ` (`#faq`) — accordion using the conversational answers approved in
+5. `FeaturedProducts` (`#collection`) — the current available MyShip variants in a
+   horizontal swipe, with each card linking to its SEO detail page and official shop.
+6. `ProductDetail` (`/products/[slug]`) — one static, indexable page per retained
+   lifecycle record; available and sold-out records expose their matching offer state.
+7. `LifestyleGallery` (`#lifestyle`) — editorial mosaic, not an Instagram grid.
+8. `DetailGrid` — close-up photography plus short editorial notes.
+9. `BrandStory` (`#story`) — brown background, cream text, restrained handwritten accent.
+10. `HowToBuy` (`#how-to-buy`) — three steps and approved Instagram/shop links.
+11. `TrustStrip` — five safe trust statements with simple line icons.
+12. `FAQ` (`#faq`) — accordion using the conversational answers approved in
     `CONTENT.md`.
-12. `InstagramCTA` (`#instagram`) — final editorial collage and Instagram CTA.
-13. `Footer` (`#site-footer`) — logo, tagline, Instagram, approved shop link, copyright.
-14. `MobileStickyCTA` — mobile-only latest-Meng-Li CTA; hide or fade near footer.
+13. `InstagramCTA` (`#instagram`) — final editorial collage and Instagram CTA.
+14. `Footer` (`#site-footer`) — logo, tagline, Instagram, approved shop link, copyright.
+15. `MobileStickyCTA` — mobile-only latest-Meng-Li CTA; hide or fade near footer.
 
-Do not add search, cart, account, checkout, payment form, wishlist, database, CMS,
-authentication, or a second route unless requested in a later brief.
+Do not add search, cart, account, checkout, payment form, wishlist, database, CMS, or
+authentication. Product detail routes are limited to the requested SEO and purchase
+handoff flow.
 
 ## Responsive contract
 
@@ -220,6 +223,16 @@ URL to the root path when publishing this release.
 
 If Organization/Brand JSON-LD is added, use only the confirmed name, logo asset, and
 Instagram `sameAs`. Do not invent address, telephone, legal name, or founding date.
+
+Implementation:
+
+- The homepage emits `Organization`, `WebSite`, `ItemList`, and `Product` JSON-LD for
+  currently available variants.
+- Each `/products/mori-yymmdd-001` page emits `Product` and `BreadcrumbList` JSON-LD.
+  Available and sold-out pages expose `InStock` or `OutOfStock`; removed and archived
+  pages remain indexable without claiming a current offer.
+- The sync workflow preserves product slugs across lifecycle updates, regenerates the
+  SEO data snapshot, and keeps all retained product pages in `sitemap.xml`.
 
 ## QA checklist before review
 

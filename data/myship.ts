@@ -2,6 +2,7 @@ export type MyShipProductStatus = 'available' | 'soldout' | 'removed' | 'archive
 
 export type MyShipProduct = {
   id: string;
+  slug?: string;
   name: string;
   price: number | null;
   image: string | null;

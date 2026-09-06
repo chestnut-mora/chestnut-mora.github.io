@@ -23,6 +23,7 @@ import { faqItems } from '@/data/faq';
 import { heroImages } from '@/data/hero';
 import { navigation } from '@/data/navigation';
 import { MYSHIP_PRODUCTS_PATH, type MyShipDataset, type MyShipProduct } from '@/data/myship';
+import { buildHomepageJsonLd, serializeJsonLd } from '@/data/seo';
 import { social } from '@/data/social';
 import { AvalUnboxingHero } from '@/components/aval-unboxing-hero';
 
@@ -79,6 +80,7 @@ function formatSyncTime(value: string) {
 function MyShipProductCard({ product, index }: { product: MyShipProduct; index: number }) {
   const [imageFailed, setImageFailed] = useState(false);
   const productUrl = product.deepLink ?? product.sourceUrl;
+  const productDetailUrl = product.slug ? `/products/${product.slug}` : productUrl;
   const tone = myShipCardTones[index % myShipCardTones.length];
 
   return (
@@ -87,7 +89,7 @@ function MyShipProductCard({ product, index }: { product: MyShipProduct; index: 
       data-product-name={product.name}
       data-product-status={product.status}
     >
-      <a className="product-image-wrap" href={productUrl} target="_blank" rel="noopener noreferrer" aria-label={`查看${product.name}`}>
+      <a className="product-image-wrap" href={productDetailUrl} aria-label={`查看${product.name}商品頁`}>
         {imageFailed || !product.image ? (
           <span className="product-image-fallback" aria-hidden="true">
             <Image src="/assets/brand/logo-brown.png" alt="" width={360} height={360} />
@@ -103,7 +105,7 @@ function MyShipProductCard({ product, index }: { product: MyShipProduct; index: 
         )}
       </a>
       <div className="product-card-body">
-        <h3>{product.name}</h3>
+        <h3><a href={productDetailUrl}>{product.name}</a></h3>
         <div className="product-card-footer">
           <span className="product-price">
             {product.price === null ? '價格請見賣貨便' : `NT$${product.price.toLocaleString('zh-TW')}`}
@@ -340,6 +342,7 @@ export default function Home() {
 
   return (
     <div className="site-shell">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(buildHomepageJsonLd()) }} />
       <header className="site-header">
         <div className="container header-inner">
           <a className="brand-lockup" href="#top" onClick={closeMenu} aria-label="回到栗子森林首頁">
