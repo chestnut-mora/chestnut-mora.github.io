@@ -477,7 +477,7 @@ export default function Home() {
               </a>
               <figure className="intro-photo image-reveal">
                 <Image
-                  src="/assets/lifestyle/lifestyle-macaron.png"
+                  src="/assets/lifestyle/lifestyle-macaron.webp"
                   alt="粉色甜點場景裡的手作萌粒手機鍊"
                   width="1122"
                   height="1402"
@@ -609,7 +609,7 @@ export default function Home() {
             <div className="lifestyle-layout">
               <figure className="lifestyle-feature image-reveal">
                 <Image
-                  src="/assets/lifestyle/lifestyle-pool.png"
+                  src="/assets/lifestyle/lifestyle-pool.webp"
                   alt="手持藍色珠珠萌栗手機鍊，背景是陽光下的水面與手機"
                   width="1086"
                   height="1448"
@@ -621,7 +621,7 @@ export default function Home() {
               <div className="lifestyle-stack">
                 <figure className="lifestyle-small lifestyle-small-lavender image-reveal">
                   <Image
-                    src="/assets/lifestyle/lifestyle-lavender.png"
+                    src="/assets/lifestyle/lifestyle-lavender.webp"
                   alt="紫色花朵與粉紫色萌粒手機鍊掛在白色包包上"
                     width="1122"
                     height="1402"
@@ -860,7 +860,7 @@ export default function Home() {
             </div>
             <div className="ig-collage" aria-label="栗子森林生活情境圖片">
               <figure className="ig-photo ig-photo-one">
-                <Image src="/assets/lifestyle/lifestyle-lavender.png" alt="紫色花朵旁的粉紫萌栗" width="1122" height="1402" loading="lazy" decoding="async" />
+                <Image src="/assets/lifestyle/lifestyle-lavender.webp" alt="紫色花朵旁的粉紫萌栗" width="1122" height="1402" loading="lazy" decoding="async" />
                 <figcaption>little moments</figcaption>
               </figure>
               <figure className="ig-photo ig-photo-two">

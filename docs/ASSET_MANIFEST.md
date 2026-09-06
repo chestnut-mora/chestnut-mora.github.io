@@ -44,9 +44,9 @@ public/assets/
 | Public path | Original file | Size | Role | Status |
 | --- | --- | --- | --- | --- |
 | `assets/hero/hero-forest.png` | `首頁指定用圖 (9).png` | 1080 × 1350 | Hero lifestyle image; warm forest/market scene | approved / used |
-| `assets/lifestyle/lifestyle-pool.png` | `首頁指定用圖 (1).png` | 1086 × 1448 | Lifestyle: hand, phone, water, blue accent | approved / used |
-| `assets/lifestyle/lifestyle-lavender.png` | `首頁指定用圖 (2).png` | 1122 × 1402 | Lifestyle: bag, flowers, pink/lavender accent | approved / used |
-| `assets/lifestyle/lifestyle-macaron.png` | `首頁指定用圖 (3).png` | 1122 × 1402 | Product/lifestyle: bag, dessert, pink scene | approved / used |
+| `assets/lifestyle/lifestyle-pool.webp` | `首頁指定用圖 (1).png` | 1086 × 1448 | Lifestyle: hand, phone, water, blue accent | approved / used |
+| `assets/lifestyle/lifestyle-lavender.webp` | `首頁指定用圖 (2).png` | 1122 × 1402 | Lifestyle: bag, flowers, pink/lavender accent | approved / used |
+| `assets/lifestyle/lifestyle-macaron.webp` | `首頁指定用圖 (3).png` | 1122 × 1402 | Product/lifestyle: bag, dessert, pink scene | approved / used |
 | `assets/products/product-sweet.png` | `首頁指定用圖 (5).png` | 1080 × 1350 | Product: pastel sweet / character detail | approved / used |
 | `assets/products/product-color.png` | `首頁指定用圖 (6).png` | 1080 × 1350 | Product: colorful paired charms | approved / used |
 | `assets/details/detail-night.png` | `首頁指定用圖 (7).png` | 1080 × 1350 | Detail: night-themed character and beads | approved / future-ready |

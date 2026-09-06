@@ -11,21 +11,21 @@ export type HeroImage = {
 const originalHeroImages: HeroImage[] = [
   {
     id: 'hero-image-01',
-    image: '/assets/lifestyle/lifestyle-pool.png',
+    image: '/assets/lifestyle/lifestyle-pool.webp',
     width: 1086,
     height: 1448,
     alt: '手持藍色珠珠萌栗手機鍊，背景是陽光下的水面與手機',
   },
   {
     id: 'hero-image-02',
-    image: '/assets/lifestyle/lifestyle-lavender.png',
+    image: '/assets/lifestyle/lifestyle-lavender.webp',
     width: 1122,
     height: 1402,
     alt: '紫色花朵與粉紫色萌粒手機鍊掛在白色包包上',
   },
   {
     id: 'hero-image-03',
-    image: '/assets/lifestyle/lifestyle-macaron.png',
+    image: '/assets/lifestyle/lifestyle-macaron.webp',
     width: 1122,
     height: 1402,
     alt: '粉色甜點場景裡的手作萌粒手機鍊',
