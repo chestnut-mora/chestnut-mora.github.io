@@ -1,10 +1,9 @@
 'use client';
 
-/* oxlint-disable next/no-img-element */
+/* oxlint-disable next/no-img-element, next/no-html-link-for-pages */
 
 import { useEffect, useRef, useState, type KeyboardEvent, type MouseEvent, type PointerEvent, type ReactNode } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import {
   ArrowRight,
   ArrowUpRight,
@@ -528,9 +527,9 @@ export default function Home() {
                 description="每一條萌栗，都把喜歡的角色與手作搭配放進日常。"
               />
               <div className="collection-heading-links">
-                <Link className="text-link" href="/products/">
+                <a className="text-link" href="/products">
                   所有萌栗 <ArrowUpRight size={16} strokeWidth={1.8} />
-                </Link>
+                </a>
                 <a className="desktop-text-link" href={social.instagramUrl} target="_blank" rel="noopener noreferrer">
                   查看最新貼文 <ArrowUpRight size={16} strokeWidth={1.8} />
                 </a>
