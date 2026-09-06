@@ -82,7 +82,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
       </header>
 
       <main className="product-page-main">
-        <a className="product-page-back" href="/products/">
+        <a className="product-page-back" href="/products">
           <ArrowLeft size={16} strokeWidth={1.8} /> 回到所有萌栗
         </a>
         <section className="product-detail-hero" aria-labelledby="product-title">
