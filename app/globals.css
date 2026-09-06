@@ -1132,6 +1132,8 @@ h2 {
   padding: 24px 22px;
   border: 1px solid rgba(101, 76, 64, 0.1);
   border-radius: var(--radius-card);
+  transition: transform 280ms cubic-bezier(0.2, 0.75, 0.18, 1), box-shadow 280ms ease, border-color 280ms ease;
+  will-change: transform;
 }
 
 .promise-card::after {
@@ -1143,6 +1145,7 @@ h2 {
   border: 1px solid rgba(101, 76, 64, 0.12);
   border-radius: 50%;
   content: '';
+  transition: transform 420ms cubic-bezier(0.2, 0.75, 0.18, 1);
 }
 
 .promise-card-pink {
@@ -1165,6 +1168,7 @@ h2 {
   border: 1px solid rgba(101, 76, 64, 0.17);
   border-radius: 50%;
   background: rgba(255, 253, 249, 0.42);
+  transition: transform 280ms cubic-bezier(0.2, 0.75, 0.18, 1), background 280ms ease, border-color 280ms ease;
 }
 
 .promise-number {
@@ -1175,6 +1179,7 @@ h2 {
   font-family: Georgia, serif;
   font-size: 0.75rem;
   letter-spacing: 0.1em;
+  transition: color 280ms ease;
 }
 
 .promise-card h3 {
@@ -1183,6 +1188,51 @@ h2 {
   font-size: 1.28rem;
   font-weight: 650;
   letter-spacing: -0.03em;
+  transition: transform 280ms cubic-bezier(0.2, 0.75, 0.18, 1), color 280ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .promise-card:hover {
+    border-color: rgba(101, 76, 64, 0.24);
+    box-shadow: 0 18px 34px rgba(101, 76, 64, 0.12);
+    transform: translateY(-6px);
+  }
+
+  .promise-card:hover::after {
+    transform: translate(-10px, -10px) scale(1.08);
+  }
+
+  .promise-card:hover .promise-icon {
+    border-color: rgba(101, 76, 64, 0.28);
+    background: rgba(255, 253, 249, 0.68);
+    transform: translateY(-2px) rotate(-4deg);
+  }
+
+  .promise-card:hover .promise-number {
+    color: rgba(101, 76, 64, 0.82);
+  }
+
+  .promise-card:hover h3 {
+    color: #533a2e;
+    transform: translateX(2px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .promise-card,
+  .promise-card::after,
+  .promise-card .promise-number,
+  .promise-card h3,
+  .promise-icon {
+    transition: none;
+  }
+
+  .promise-card:hover,
+  .promise-card:hover::after,
+  .promise-card:hover h3,
+  .promise-card:hover .promise-icon {
+    transform: none;
+  }
 }
 
 .promise-card p {

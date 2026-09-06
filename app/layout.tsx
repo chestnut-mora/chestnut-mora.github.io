@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://chestnut-mora.github.io'),
   title: '栗子森林 Chestnut Mora｜正版角色手作萌粒手機鍊與手機吊飾',
   description:
-    '栗子森林 Chestnut Mora，以台灣原創設計理念進行手作搭配，將正版角色與串珠、配件組合成獨特的萌粒手機鍊與手機吊飾；在栗子森林，我們稱這些陪伴日常的小收藏為「萌栗」。',
+    '栗子森林 Chestnut Mora，以台灣原創設計理念進行手作搭配，將泡泡瑪特（POP MART）正版 IP 角色與串珠、配件組合成獨特的萌粒（POP BEAN）手機鍊與手機吊飾；在栗子森林，我們稱這些陪伴日常的小收藏為「萌栗」。',
   alternates: {
     canonical: '/',
   },
