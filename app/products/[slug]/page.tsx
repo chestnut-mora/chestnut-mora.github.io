@@ -1,8 +1,7 @@
-/* oxlint-disable next/no-img-element */
+/* oxlint-disable next/no-img-element, next/no-html-link-for-pages */
 
 import type { Metadata } from 'next';
 import { ArrowLeft, ArrowUpRight } from 'lucide-react';
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import {
   BRAND_NAME,
@@ -67,19 +66,19 @@ export default async function ProductPage({ params }: ProductPageProps) {
     <div className="product-page-shell">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(buildProductJsonLd(product)) }} />
       <header className="product-page-header">
-        <Link className="product-page-brand" href="/" aria-label="回到栗子森林首頁">
+        <a className="product-page-brand" href="/" aria-label="回到栗子森林首頁">
           <span className="product-page-brand-name">{BRAND_NAME_ZH}</span>
           <span className="product-page-brand-english">{BRAND_NAME.toUpperCase()}</span>
-        </Link>
+        </a>
         <a className="product-page-instagram" href={social.instagramUrl} target="_blank" rel="noopener noreferrer">
           Instagram <ArrowUpRight size={15} strokeWidth={1.8} />
         </a>
       </header>
 
       <main className="product-page-main">
-        <Link className="product-page-back" href="/#collection">
+        <a className="product-page-back" href="/#collection">
           <ArrowLeft size={16} strokeWidth={1.8} /> 回到所有萌栗
-        </Link>
+        </a>
         <section className="product-detail-hero" aria-labelledby="product-title">
           <div className="product-detail-media">
             {product.image ? <img src={product.image} alt={`${product.name} 萌栗商品圖片`} /> : null}
@@ -115,7 +114,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
         <section className="product-detail-story" aria-label="萌栗介紹">
           <p className="eyebrow">CHESTNUT MORA</p>
           <p>栗子森林以正版角色為主角，慢慢挑選珠珠、鍊條與小配件，做出一條條有自己個性的萌栗。</p>
-          <Link href="/">回到栗子森林首頁 <ArrowUpRight size={15} strokeWidth={1.8} /></Link>
+          <a href="/">回到栗子森林首頁 <ArrowUpRight size={15} strokeWidth={1.8} /></a>
         </section>
       </main>
     </div>
