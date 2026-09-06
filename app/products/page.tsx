@@ -7,11 +7,11 @@ import { social } from '@/data/social';
 
 export const metadata: Metadata = {
   title: '所有萌栗｜泡泡瑪特 POP MART 萌粒手機鍊｜栗子森林 Chestnut Mora',
-  description: '查看栗子森林目前的萌粒手機鍊，以及曾經製作過、被喜愛它的主人收養的歷代萌栗作品。',
+  description: '查看栗子森林目前等待著妳的萌粒手機鍊，以及曾經被喜愛它的主人收養的絕版萌栗。',
   alternates: { canonical: '/products/' },
   openGraph: {
     title: '所有萌栗｜栗子森林 Chestnut Mora',
-    description: '目前萌栗與歷代萌栗作品，記錄每一次只遇見一次的手作搭配。',
+    description: '目前萌栗與絕版萌栗，記錄每一次只遇見一次的手作搭配。',
     type: 'website',
     url: '/products/',
   },
@@ -28,13 +28,13 @@ function ProductIndexCard({ product, index }: { product: (typeof myShipSeoProduc
     <article className={`product-card product-index-card product-card-${tone}`} data-product-status={product.status}>
       <a className="product-image-wrap" href={detailUrl} aria-label={`查看${product.name}商品頁`}>
         {product.image ? <img src={product.image} alt={`手作 ${product.name} 萌粒手機鍊商品圖片`} loading="lazy" decoding="async" /> : <span className="product-image-fallback">栗子森林</span>}
-        <span className="product-badge">{getProductStatusLabel(product.status)}</span>
+        <span className="product-badge">{isAvailable ? getProductStatusLabel(product.status) : '絕版'}</span>
       </a>
       <div className="product-card-body">
         <h2><a href={detailUrl}>{product.name}</a></h2>
         <div className="product-card-footer">
           <span className="product-price">
-            {isAvailable && product.price !== null ? `NT$${product.price.toLocaleString('zh-TW')}` : isAvailable ? '價格請見賣貨便' : '歷代作品'}
+            {isAvailable && product.price !== null ? `NT$${product.price.toLocaleString('zh-TW')}` : isAvailable ? '價格請見賣貨便' : '已有主人'}
           </span>
           {isAvailable ? (
             <a href={getShopUrl(product)} target="_blank" rel="noopener noreferrer">
@@ -62,7 +62,7 @@ export default function ProductsPage() {
         '@type': 'CollectionPage',
         '@id': `${SITE_ORIGIN}/products/#collection`,
         url: `${SITE_ORIGIN}/products/`,
-        name: '所有萌栗｜目前萌栗與歷代萌栗作品',
+        name: '所有萌栗｜目前萌栗與絕版萌栗',
         isPartOf: { '@id': `${SITE_ORIGIN}/#website` },
       },
       {
@@ -109,7 +109,7 @@ export default function ProductsPage() {
         <div className="product-index-heading">
           <p className="eyebrow">CHESTNUT MORA · COLLECTION</p>
           <h1>所有萌栗</h1>
-          <p>把現在可以遇見的萌栗，和曾經在森林裡生活過的作品，放在同一頁慢慢逛。</p>
+          <p>現在等待著妳的萌栗，和曾經在森林裡生活過的萌栗，都在這裡。</p>
         </div>
 
         <section className="product-index-section" aria-labelledby="current-products-title">
@@ -131,7 +131,7 @@ export default function ProductsPage() {
           <div className="product-index-section-heading">
             <div>
               <p className="eyebrow">FROM THE FOREST ARCHIVE</p>
-              <h2 id="historical-products-title">歷代萌栗作品</h2>
+              <h2 id="historical-products-title">絕版萌栗</h2>
             </div>
           </div>
           {historicalProducts.length > 0 ? (
