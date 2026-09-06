@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://chestnut-mora.github.io/sitemap.xml
