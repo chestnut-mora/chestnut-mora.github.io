@@ -7,7 +7,7 @@ import type { AvalStateId } from '@/data/aval';
 
 type AvalMotionState = 'AVAL_IDLE' | 'AVAL_TOUCH_LEFT' | 'AVAL_TOUCH_RIGHT' | 'AVAL_TOUCH_CENTER' | 'AVAL_SETTLE';
 
-function AvalBraceletPresence({ active, reducedMotion, onReady }: { active: boolean; reducedMotion: boolean; onReady?: () => void }) {
+function AvalBraceletPresence({ active, onReady }: { active: boolean; onReady?: () => void }) {
   const rootRef = useRef<HTMLDivElement>(null);
   const motionRef = useRef<HTMLDivElement>(null);
   const animationRef = useRef<Animation | null>(null);
@@ -28,15 +28,15 @@ function AvalBraceletPresence({ active, reducedMotion, onReady }: { active: bool
   }, []);
 
   useEffect(() => {
-    if (!active || !inViewport || reducedMotion) {
+    if (!active || !inViewport) {
       animationRef.current?.cancel();
       animationRef.current = null;
     }
-  }, [active, inViewport, reducedMotion]);
+  }, [active, inViewport]);
 
   const runSway = useCallback((direction: 'left' | 'right' | 'center', amplitude = 1) => {
     const target = motionRef.current;
-    if (!target || !active || !inViewport || reducedMotion || avalFailed) return;
+    if (!target || !active || !inViewport || avalFailed) return;
 
     const sign = direction === 'left' ? -1 : 1;
     const peak = direction === 'center' ? 2.2 : 3 * sign;
@@ -57,7 +57,7 @@ function AvalBraceletPresence({ active, reducedMotion, onReady }: { active: bool
       setMotionState('AVAL_SETTLE');
       window.setTimeout(() => setMotionState('AVAL_IDLE'), 160);
     };
-  }, [active, avalFailed, inViewport, reducedMotion]);
+  }, [active, avalFailed, inViewport]);
 
   const handlePointerMove = (event: ReactPointerEvent<HTMLDivElement>) => {
     if (event.pointerType !== 'mouse') return;
@@ -106,7 +106,7 @@ function AvalBraceletPresence({ active, reducedMotion, onReady }: { active: bool
           onError={() => setAvalFailed(true)}
         />
       </div>
-      {active && avalReady && !avalFailed && showHint && !reducedMotion ? <span className="aval-touch-hint">輕碰看看 ♡</span> : null}
+      {active && avalReady && !avalFailed && showHint ? <span className="aval-touch-hint">輕碰看看 ♡</span> : null}
     </div>
   );
 }
@@ -124,20 +124,11 @@ export function AvalUnboxingHero() {
   const timelineRef = useRef<gsap.core.Timeline | null>(null);
   const [phase, setPhase] = useState<AvalStateId>('sealed');
   const [isRunning, setIsRunning] = useState(false);
-  const [reducedMotion, setReducedMotion] = useState(false);
   const [avalActive, setAvalActive] = useState(false);
   const [avalLiveReady, setAvalLiveReady] = useState(false);
   const [assetError, setAssetError] = useState(false);
 
   const markAvalReady = useCallback(() => setAvalLiveReady(true), []);
-
-  useEffect(() => {
-    const media = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const update = () => setReducedMotion(media.matches);
-    update();
-    media.addEventListener('change', update);
-    return () => media.removeEventListener('change', update);
-  }, []);
 
   useLayoutEffect(() => {
     const elements = [sealedRef.current, peeledRef.current, openRef.current, cardRef.current, pouchBaseRef.current, pouchRef.current, braceletRef.current, pouchBraceletRef.current];
@@ -179,32 +170,18 @@ export function AvalUnboxingHero() {
 
   useLayoutEffect(() => {
     if (!avalActive) {
-      if (!reducedMotion) gsap.set(pouchBraceletRef.current, { autoAlpha: 0 });
+      gsap.set(pouchBraceletRef.current, { autoAlpha: 0 });
       return;
     }
-    if (reducedMotion || !avalLiveReady || !pouchBraceletRef.current) return;
+    if (!avalLiveReady || !pouchBraceletRef.current) return;
 
     // Both layers share identical geometry and shadow. Swap them before paint
     // so their alpha shadows never stack during the GSAP-to-AVAL handoff.
     gsap.set(pouchBraceletRef.current, { autoAlpha: 0 });
-  }, [avalActive, avalLiveReady, reducedMotion]);
-
-  useEffect(() => {
-    if (!reducedMotion) return;
-    timelineRef.current?.pause(0);
-    gsap.set([sealedRef.current, peeledRef.current, openRef.current, cardRef.current, pouchBaseRef.current, pouchRef.current], { autoAlpha: 0 });
-    gsap.set(pouchBraceletRef.current, { autoAlpha: 1, x: 0, y: 0, scale: 0.88, xPercent: -50, yPercent: -50, rotation: 0, transformOrigin: '50% 50%' });
-    gsap.set(braceletRef.current, { autoAlpha: 1, x: 0, y: 0, scale: 1, xPercent: 0, yPercent: 0, rotation: 0 });
-    const timer = window.setTimeout(() => {
-      setPhase('final');
-      setIsRunning(false);
-      setAvalActive(false);
-    }, 0);
-    return () => window.clearTimeout(timer);
-  }, [reducedMotion]);
+  }, [avalActive, avalLiveReady]);
 
   const playTimeline = () => {
-    if (reducedMotion || assetError) {
+    if (assetError) {
       setPhase('final');
       return;
     }
@@ -226,7 +203,7 @@ export function AvalUnboxingHero() {
             {isRunning ? '萌栗正在來的路上…' : phase === 'final' ? '再打開一次' : '打開看看'} <span aria-hidden="true">→</span>
           </button>
         </div>
-        <div className="aval-player" data-state={phase} data-reduced-motion={reducedMotion ? 'true' : 'false'}>
+        <div className="aval-player" data-state={phase}>
           <div className="aval-stage">
             {assetError ? <span className="aval-static-fallback"><span>栗子森林</span><strong>你的萌栗已送達 ♡</strong></span> : <>
               <Image ref={sealedRef} className="aval-object aval-gsap-object gsap-sealed" src="/assets/aval/sealed-box.png" alt="封好的栗子森林萌粒手機鍊開箱盒" width={1536} height={1024} priority onError={() => setAssetError(true)} />
@@ -238,7 +215,7 @@ export function AvalUnboxingHero() {
               <div ref={pouchBraceletRef} className="aval-object aval-gsap-object gsap-pouch-bracelet-layer">
                 <Image ref={braceletRef} className="gsap-bracelet-static" src="/assets/aval/bracelet.webp" alt="栗子森林萌粒手機鍊與角色吊飾完整展示" width={702} height={1200} priority onError={() => setAssetError(true)} />
               </div>
-              <AvalBraceletPresence active={avalActive && phase === 'final'} reducedMotion={reducedMotion} onReady={markAvalReady} />
+              <AvalBraceletPresence active={avalActive && phase === 'final'} onReady={markAvalReady} />
             </>}
           </div>
         </div>

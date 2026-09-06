@@ -1190,7 +1190,6 @@ h2 {
   letter-spacing: -0.03em;
   transition: transform 280ms cubic-bezier(0.2, 0.75, 0.18, 1), color 280ms ease;
 }
-
 @media (hover: hover) and (pointer: fine) {
   .promise-card:hover {
     border-color: rgba(101, 76, 64, 0.24);
@@ -2604,23 +2603,5 @@ h2 {
 
   .aval-primary-action {
     margin-top: 26px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-
-  .aval-player[data-reduced-motion='true'] .aval-bracelet {
-    animation: none;
   }
 }
