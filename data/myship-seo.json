@@ -691,6 +691,22 @@
       "lastmod": "2026-09-06"
     },
     {
+      "id": "myship-ee13d232b8d431c9",
+      "slug": "mori-260731-001",
+      "name": "💚錦鯉、 UU、四幕戲",
+      "price": 1750,
+      "image": "/assets/products/mori-260731-001.webp",
+      "sourceImageUrl": "https://myship.7-11.com.tw/i/cgdm/GM2602274753732/2607311284261193.jpg",
+      "sourceUrl": "https://myship.7-11.com.tw/general/detail/GM2602274753732",
+      "deepLink": null,
+      "status": "soldout",
+      "productId": "2602271055110356",
+      "variantId": "2607311284255617",
+      "specId": "2607311284255617",
+      "skuId": null,
+      "lastmod": "2026-09-06"
+    },
+    {
       "id": "myship-74fc8087b1607fbd",
       "slug": "mori-260605-009",
       "name": "🩵Alice3條萌栗專屬🔗🩵",
@@ -735,22 +751,6 @@
       "productId": "2602271055110356",
       "variantId": "2607261277082229",
       "specId": "2607261277082229",
-      "skuId": null,
-      "lastmod": "2026-09-06"
-    },
-    {
-      "id": "myship-ee13d232b8d431c9",
-      "slug": "mori-260731-001",
-      "name": "💚錦鯉、 UU、四幕戲",
-      "price": 1750,
-      "image": "/assets/products/mori-260731-001.webp",
-      "sourceImageUrl": "https://myship.7-11.com.tw/i/cgdm/GM2602274753732/2607311284261193.jpg",
-      "sourceUrl": "https://myship.7-11.com.tw/general/detail/GM2602274753732",
-      "deepLink": null,
-      "status": "soldout",
-      "productId": "2602271055110356",
-      "variantId": "2607311284255617",
-      "specId": "2607311284255617",
       "skuId": null,
       "lastmod": "2026-09-06"
     }
