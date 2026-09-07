@@ -59,6 +59,10 @@
 | `scripts/seo-assets.mjs` | SEO dataset、lastmod、slug 與 sitemap |
 | `.github/workflows/*.yml` | 定時同步與 GitHub Pages 部署 |
 
+全站 favicon 也由 `app/layout.tsx` 宣告。Google Search 優先使用穩定的
+`/favicon-48x48.png`，另提供 96／192／512px PNG 與 180px Apple Touch Icon；
+不要在一般版本更新時更換這些公開 URL。
+
 ## 4. 商品資料管線
 
 ```text

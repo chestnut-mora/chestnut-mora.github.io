@@ -11,7 +11,14 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   icons: {
-    icon: '/assets/brand/logo-brown.png',
+    icon: [
+      { url: '/favicon-48x48.png', sizes: '48x48', type: 'image/png' },
+      { url: '/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
+      { url: '/favicon-192x192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/favicon-512x512.png', sizes: '512x512', type: 'image/png' },
+    ],
+    shortcut: '/favicon-48x48.png',
+    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
   },
   openGraph: {
     title: '栗子森林 Chestnut Mora｜台灣手作｜泡泡瑪特 POP MART 萌粒手機鍊',

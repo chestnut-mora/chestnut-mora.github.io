@@ -39,6 +39,26 @@ public/assets/
 | `assets/brand/instagram-icon-brown.png` | User-supplied `instagram (1).png`, recolored to `#654A3B` | 512 × 512 | Instagram icon for light surfaces | approved / used |
 | `assets/brand/instagram-icon-light.png` | User-supplied `instagram (1).png`, recolored to `#E9D9C5` | 512 × 512 | Instagram icon for deep brown surfaces | approved / used |
 
+## Search and device icons
+
+The favicon is a simplified derivative of the approved three-character logo: thicker
+brand-brown lines, no `MORI` lettering, a solid warm-cream circular badge, and genuine
+transparent alpha outside the circle. PNG is the canonical format; the stable 48px
+path is listed first in page metadata for Google Search.
+
+| Public path | Size | Role | Status |
+| --- | --- | --- | --- |
+| `favicon-48x48.png` | 48 × 48 | Primary Google Search and browser favicon | approved / used |
+| `favicon-96x96.png` | 96 × 96 | Higher-density favicon | approved / used |
+| `favicon-192x192.png` | 192 × 192 | Device and install surface icon | approved / used |
+| `favicon-512x512.png` | 512 × 512 | Large device icon and favicon master derivative | approved / used |
+| `apple-touch-icon.png` | 180 × 180 | Apple touch icon | approved / used |
+
+The favicon artwork was generated as a raster simplification from
+`assets/brand/logo-brown.png`, then alpha-validated and resized locally without
+changing its aspect ratio. Keep these URLs stable so search engines do not need to
+rediscover the icon after routine site updates.
+
 ## Approved photography
 
 | Public path | Original file | Size | Role | Status |

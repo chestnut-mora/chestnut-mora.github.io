@@ -67,3 +67,10 @@ Vinext beta + static export + GitHub Pages 曾發生 `next/link` 點擊被攔截
 ## D-015 FAQ 單一來源
 
 可見 FAQ 與 SEO `FAQPage` 都從 `data/faq.ts` 建立，防止畫面與 Google 讀到不同答案。
+
+## D-016 搜尋 favicon 使用 PNG
+
+Google 搜尋與現代瀏覽器以 `/favicon-48x48.png` 為主要穩定圖示，並提供
+96／192／512px 與 Apple Touch Icon。圖案使用簡化三栗角色、加粗品牌棕線條、
+奶油色實心圓底與圓外透明 alpha；不保留縮小後不可讀的 `MORI` 文字。ICO 不是
+Google 顯示的必要條件，目前不作為主要格式。
