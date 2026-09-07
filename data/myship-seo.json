@@ -675,6 +675,22 @@
       "lastmod": "2026-09-06"
     },
     {
+      "id": "myship-6e1a3f0c3d114bba",
+      "slug": "mori-260726-001",
+      "name": "💕10條萌栗專屬🔗💕",
+      "price": 5448,
+      "image": "/assets/products/mori-260726-001.webp",
+      "sourceImageUrl": "https://myship.7-11.com.tw/i/cgdm/GM2602274753732/2608171309854247.jpg",
+      "sourceUrl": "https://myship.7-11.com.tw/general/detail/GM2602274753732",
+      "deepLink": null,
+      "status": "soldout",
+      "productId": "2602271055110356",
+      "variantId": "2607261277082229",
+      "specId": "2607261277082229",
+      "skuId": null,
+      "lastmod": "2026-09-06"
+    },
+    {
       "id": "myship-1f316dd48a45cd39",
       "slug": "mori-260424-021",
       "name": "❤️SP幸運星🌟",
@@ -719,22 +735,6 @@
       "productId": "2602271055110356",
       "variantId": "2606281235448296",
       "specId": "2606281235448296",
-      "skuId": null,
-      "lastmod": "2026-09-06"
-    },
-    {
-      "id": "myship-6e1a3f0c3d114bba",
-      "slug": "mori-260726-001",
-      "name": "💕10條萌栗專屬🔗💕",
-      "price": 5448,
-      "image": "/assets/products/mori-260726-001.webp",
-      "sourceImageUrl": "https://myship.7-11.com.tw/i/cgdm/GM2602274753732/2608171309854247.jpg",
-      "sourceUrl": "https://myship.7-11.com.tw/general/detail/GM2602274753732",
-      "deepLink": null,
-      "status": "soldout",
-      "productId": "2602271055110356",
-      "variantId": "2607261277082229",
-      "specId": "2607261277082229",
       "skuId": null,
       "lastmod": "2026-09-06"
     },
