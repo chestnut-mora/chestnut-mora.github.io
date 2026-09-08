@@ -54,7 +54,7 @@ export function getProductStatusLabel(status: MyShipProductStatus) {
     case 'available':
       return '現貨萌栗';
     case 'soldout':
-      return '已售出／目前無庫存';
+      return '絕版';
     case 'removed':
       return '歷代萌栗／已下架';
     case 'archived':
