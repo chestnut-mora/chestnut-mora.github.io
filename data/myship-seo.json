@@ -579,22 +579,6 @@
       "lastmod": "2026-09-06"
     },
     {
-      "id": "myship-ed227d5a2775df22",
-      "slug": "mori-260612-004",
-      "name": "kiki彩虹糖",
-      "price": 430,
-      "image": "/assets/products/mori-260612-004.webp",
-      "sourceImageUrl": "https://myship.7-11.com.tw/i/cgdm/GM2602274753732/2606121211989323.jpg",
-      "sourceUrl": "https://myship.7-11.com.tw/general/detail/GM2602274753732",
-      "deepLink": null,
-      "status": "available",
-      "productId": "2602271055110356",
-      "variantId": "2606121211991830",
-      "specId": "2606121211991830",
-      "skuId": null,
-      "lastmod": "2026-09-06"
-    },
-    {
       "id": "myship-d6e75579d33bd847",
       "slug": "mori-260612-003",
       "name": "妹妹+無憂兩條（單購私訊）",
@@ -689,6 +673,22 @@
       "specId": "2606051201389436",
       "skuId": null,
       "lastmod": "2026-09-06"
+    },
+    {
+      "id": "myship-ed227d5a2775df22",
+      "slug": "mori-260612-004",
+      "name": "kiki彩虹糖",
+      "price": 430,
+      "image": "/assets/products/mori-260612-004.webp",
+      "sourceImageUrl": "https://myship.7-11.com.tw/i/cgdm/GM2602274753732/2606121211989323.jpg",
+      "sourceUrl": "https://myship.7-11.com.tw/general/detail/GM2602274753732",
+      "deepLink": null,
+      "status": "soldout",
+      "productId": "2602271055110356",
+      "variantId": "2606121211991830",
+      "specId": "2606121211991830",
+      "skuId": null,
+      "lastmod": "2026-09-10"
     },
     {
       "id": "myship-f178743237314091",
