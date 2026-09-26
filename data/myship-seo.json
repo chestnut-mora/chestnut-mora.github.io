@@ -131,22 +131,6 @@
       "lastmod": "2026-09-06"
     },
     {
-      "id": "myship-a8cd0034565759ec",
-      "slug": "mori-260424-009",
-      "name": "haci抱抱系列冰淇淋",
-      "price": 400,
-      "image": "/assets/products/mori-260424-009.webp",
-      "sourceImageUrl": "https://myship.7-11.com.tw/i/cgdm/GM2602274753732/2604241140687852.jpg",
-      "sourceUrl": "https://myship.7-11.com.tw/general/detail/GM2602274753732",
-      "deepLink": null,
-      "status": "available",
-      "productId": "2602271055110356",
-      "variantId": "2604241140721403",
-      "specId": "2604241140721403",
-      "skuId": null,
-      "lastmod": "2026-09-06"
-    },
-    {
       "id": "myship-26f50ac9aeed3d5e",
       "slug": "mori-260424-010",
       "name": "haci抱抱蝴蝶結",
@@ -721,6 +705,22 @@
       "specId": "2609231362451406",
       "skuId": null,
       "lastmod": "2026-09-22"
+    },
+    {
+      "id": "myship-a8cd0034565759ec",
+      "slug": "mori-260424-009",
+      "name": "haci抱抱系列冰淇淋",
+      "price": 400,
+      "image": "/assets/products/mori-260424-009.webp",
+      "sourceImageUrl": "https://myship.7-11.com.tw/i/cgdm/GM2602274753732/2604241140687852.jpg",
+      "sourceUrl": "https://myship.7-11.com.tw/general/detail/GM2602274753732",
+      "deepLink": null,
+      "status": "soldout",
+      "productId": "2602271055110356",
+      "variantId": "2604241140721403",
+      "specId": "2604241140721403",
+      "skuId": null,
+      "lastmod": "2026-09-26"
     },
     {
       "id": "myship-9a2ca5719f6eff68",
