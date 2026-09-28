@@ -707,22 +707,6 @@
       "lastmod": "2026-09-22"
     },
     {
-      "id": "myship-aeb706497e75bd52",
-      "slug": "mori-260928-001",
-      "name": "🧡💛喬專屬賣場💛🧡",
-      "price": 1300,
-      "image": "/assets/products/mori-260928-001.webp",
-      "sourceImageUrl": "https://myship.7-11.com.tw/i/cgdm/GM2602274753732/2609281369119612.jpg",
-      "sourceUrl": "https://myship.7-11.com.tw/general/detail/GM2602274753732",
-      "deepLink": null,
-      "status": "available",
-      "productId": "2602271055110356",
-      "variantId": "2609281369120316",
-      "specId": "2609281369120316",
-      "skuId": null,
-      "lastmod": "2026-09-28"
-    },
-    {
       "id": "myship-150b92866a97dd4b",
       "slug": "mori-260424-011",
       "name": "💜佳蓉💜5條專屬家連結🔗",
@@ -737,6 +721,22 @@
       "specId": "2604241140721405",
       "skuId": null,
       "lastmod": "2026-09-27"
+    },
+    {
+      "id": "myship-aeb706497e75bd52",
+      "slug": "mori-260928-001",
+      "name": "🧡💛喬專屬賣場💛🧡",
+      "price": 1300,
+      "image": "/assets/products/mori-260928-001.webp",
+      "sourceImageUrl": "https://myship.7-11.com.tw/i/cgdm/GM2602274753732/2609281369119612.jpg",
+      "sourceUrl": "https://myship.7-11.com.tw/general/detail/GM2602274753732",
+      "deepLink": null,
+      "status": "soldout",
+      "productId": "2602271055110356",
+      "variantId": "2609281369120316",
+      "specId": "2609281369120316",
+      "skuId": null,
+      "lastmod": "2026-09-28"
     },
     {
       "id": "myship-9a2ca5719f6eff68",
