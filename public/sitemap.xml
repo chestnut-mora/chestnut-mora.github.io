@@ -2,11 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://chestnut-mora.github.io/</loc>
-    <lastmod>2026-09-28</lastmod>
+    <lastmod>2026-09-29</lastmod>
   </url>
   <url>
     <loc>https://chestnut-mora.github.io/products/</loc>
-    <lastmod>2026-09-28</lastmod>
+    <lastmod>2026-09-29</lastmod>
   </url>
   <url>
     <loc>https://chestnut-mora.github.io/products/mori-260424-001</loc>
@@ -14,7 +14,7 @@
   </url>
   <url>
     <loc>https://chestnut-mora.github.io/products/mori-260424-002</loc>
-    <lastmod>2026-09-06</lastmod>
+    <lastmod>2026-09-29</lastmod>
   </url>
   <url>
     <loc>https://chestnut-mora.github.io/products/mori-260424-003</loc>
@@ -49,6 +49,10 @@
     <lastmod>2026-09-06</lastmod>
   </url>
   <url>
+    <loc>https://chestnut-mora.github.io/products/mori-260424-011</loc>
+    <lastmod>2026-09-29</lastmod>
+  </url>
+  <url>
     <loc>https://chestnut-mora.github.io/products/mori-260424-012</loc>
     <lastmod>2026-09-22</lastmod>
   </url>
@@ -66,14 +70,6 @@
   </url>
   <url>
     <loc>https://chestnut-mora.github.io/products/mori-260424-016</loc>
-    <lastmod>2026-09-06</lastmod>
-  </url>
-  <url>
-    <loc>https://chestnut-mora.github.io/products/mori-260424-017</loc>
-    <lastmod>2026-09-06</lastmod>
-  </url>
-  <url>
-    <loc>https://chestnut-mora.github.io/products/mori-260424-018</loc>
     <lastmod>2026-09-06</lastmod>
   </url>
   <url>
@@ -146,11 +142,11 @@
   </url>
   <url>
     <loc>https://chestnut-mora.github.io/products/mori-260923-002</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-09-29</lastmod>
   </url>
   <url>
     <loc>https://chestnut-mora.github.io/products/mori-260923-003</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-09-29</lastmod>
   </url>
   <url>
     <loc>https://chestnut-mora.github.io/products/mori-260923-004</loc>
@@ -185,12 +181,16 @@
     <lastmod>2026-09-22</lastmod>
   </url>
   <url>
-    <loc>https://chestnut-mora.github.io/products/mori-260424-011</loc>
-    <lastmod>2026-09-27</lastmod>
+    <loc>https://chestnut-mora.github.io/products/mori-260928-001</loc>
+    <lastmod>2026-09-29</lastmod>
   </url>
   <url>
-    <loc>https://chestnut-mora.github.io/products/mori-260928-001</loc>
-    <lastmod>2026-09-28</lastmod>
+    <loc>https://chestnut-mora.github.io/products/mori-260424-017</loc>
+    <lastmod>2026-09-06</lastmod>
+  </url>
+  <url>
+    <loc>https://chestnut-mora.github.io/products/mori-260424-018</loc>
+    <lastmod>2026-09-06</lastmod>
   </url>
   <url>
     <loc>https://chestnut-mora.github.io/products/mori-260506-003</loc>
