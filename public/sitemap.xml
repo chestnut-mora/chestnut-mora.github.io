@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://chestnut-mora.github.io/</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
   </url>
   <url>
     <loc>https://chestnut-mora.github.io/products/</loc>
@@ -39,6 +39,10 @@
   <url>
     <loc>https://chestnut-mora.github.io/products/mori-260424-008</loc>
     <lastmod>2026-09-06</lastmod>
+  </url>
+  <url>
+    <loc>https://chestnut-mora.github.io/products/mori-260424-009</loc>
+    <lastmod>2026-09-30</lastmod>
   </url>
   <url>
     <loc>https://chestnut-mora.github.io/products/mori-260424-010</loc>
@@ -178,10 +182,6 @@
   </url>
   <url>
     <loc>https://chestnut-mora.github.io/products/mori-260928-001</loc>
-    <lastmod>2026-09-29</lastmod>
-  </url>
-  <url>
-    <loc>https://chestnut-mora.github.io/products/mori-260424-009</loc>
     <lastmod>2026-09-29</lastmod>
   </url>
   <url>
