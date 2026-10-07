@@ -74,3 +74,10 @@ Google 搜尋與現代瀏覽器以 `/favicon-48x48.png` 為主要穩定圖示，
 96／192／512px 與 Apple Touch Icon。圖案使用簡化三栗角色、加粗品牌棕線條、
 奶油色實心圓底與圓外透明 alpha；不保留縮小後不可讀的 `MORI` 文字。ICO 不是
 Google 顯示的必要條件，目前不作為主要格式。
+
+## D-017 現貨商品採上架日期新到舊
+
+首頁「精選萌栗」與 `/products` 的「目前萌栗」都依商品 slug 的 `yymmdd`
+上架日期倒序排列；同日再依三碼流水號倒序。這讓新同步進來的現貨優先出現，
+同時保留永久 slug 與商品生命週期資料不變。排序集中在
+`data/myship.ts` 的 `sortProductsByPublishedDate`，不要在各頁自行建立另一套排序。

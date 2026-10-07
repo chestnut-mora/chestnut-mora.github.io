@@ -66,6 +66,7 @@ git diff -- public/sitemap.xml
 
 - 抓取失敗不得產生全商品 removed。
 - 只有現貨商品出現在首頁精選萌栗。
+- 首頁精選萌栗與 `/products` 目前萌栗都應由 `sortProductsByPublishedDate` 依上架日期新到舊排列；最新日期／同日較大流水號應在前。
 - 無庫存 variant 不應顯示為可購買。
 - 新 identity 可新增 slug；既有 identity 不得換 slug，舊 slug 不得分配給別人。
 - 商品有真正 SEO 變更才更新該商品 `lastmod`。

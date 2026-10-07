@@ -22,7 +22,7 @@ import {
 import { faqItems } from '@/data/faq';
 import { heroImages } from '@/data/hero';
 import { navigation } from '@/data/navigation';
-import { MYSHIP_PRODUCTS_PATH, type MyShipDataset, type MyShipProduct } from '@/data/myship';
+import { MYSHIP_PRODUCTS_PATH, sortProductsByPublishedDate, type MyShipDataset, type MyShipProduct } from '@/data/myship';
 import { buildHomepageJsonLd, serializeJsonLd } from '@/data/seo';
 import { social } from '@/data/social';
 import { AvalUnboxingHero } from '@/components/aval-unboxing-hero';
@@ -309,7 +309,7 @@ export default function Home() {
       })
       .then((dataset) => {
         if (cancelled || !Array.isArray(dataset.products)) return;
-        setMyShipProducts(dataset.products.filter((product) => product.status === 'available'));
+        setMyShipProducts(sortProductsByPublishedDate(dataset.products.filter((product) => product.status === 'available')));
         setMyShipSyncedAt(dataset.syncedAt ?? null);
         setShowAllMyShipProducts(false);
         setMyShipLoadState('ready');

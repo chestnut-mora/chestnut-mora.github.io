@@ -1,6 +1,6 @@
 import dataset from './myship-seo.json';
 import { faqItems } from './faq';
-import type { MyShipProductStatus } from './myship';
+import { sortProductsByPublishedDate, type MyShipProductStatus } from './myship';
 
 export const SITE_ORIGIN = 'https://chestnut-mora.github.io';
 export const BRAND_NAME = 'Chestnut Mora';
@@ -24,7 +24,7 @@ export type SeoProduct = {
   skuId: string | null;
 };
 
-export const myShipSeoProducts = dataset.products as SeoProduct[];
+export const myShipSeoProducts = sortProductsByPublishedDate(dataset.products as SeoProduct[]);
 
 export function getProductUrl(product: SeoProduct) {
   return `${SITE_ORIGIN}/products/${product.slug}`;

@@ -3,6 +3,7 @@
 import type { Metadata } from 'next';
 import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import { MyShipProductImage } from '@/components/myship-product-image';
+import { sortProductsByPublishedDate } from '@/data/myship';
 import { BRAND_NAME, BRAND_NAME_ZH, getProductStatusLabel, getProductUrl, getShopUrl, myShipSeoProducts, serializeJsonLd, SITE_ORIGIN } from '@/data/seo';
 import { social } from '@/data/social';
 
@@ -53,7 +54,7 @@ function ProductIndexCard({ product, index }: { product: (typeof myShipSeoProduc
 }
 
 export default function ProductsPage() {
-  const currentProducts = myShipSeoProducts.filter((product) => product.status === 'available');
+  const currentProducts = sortProductsByPublishedDate(myShipSeoProducts.filter((product) => product.status === 'available'));
   const historicalProducts = myShipSeoProducts.filter((product) => ['soldout', 'removed', 'archived'].includes(product.status));
   const items = [...currentProducts, ...historicalProducts];
   const jsonLd = {

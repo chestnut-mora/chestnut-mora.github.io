@@ -25,6 +25,24 @@ function dateTokenForProduct(product) {
   return '000000';
 }
 
+function sortProductsByPublishedDate(products) {
+  return [...products].sort((left, right) => {
+    const leftDate = dateTokenForProduct(left);
+    const rightDate = dateTokenForProduct(right);
+    const dateOrder = rightDate.localeCompare(leftDate);
+    if (dateOrder !== 0) return dateOrder;
+
+    const leftSequence = Number(String(left.slug || '').match(/^mori-\d{6}-(\d{3})$/u)?.[1] || 0);
+    const rightSequence = Number(String(right.slug || '').match(/^mori-\d{6}-(\d{3})$/u)?.[1] || 0);
+    if (rightSequence !== leftSequence) return rightSequence - leftSequence;
+
+    const rightSynced = Date.parse(right.syncedAt || '') || 0;
+    const leftSynced = Date.parse(left.syncedAt || '') || 0;
+    if (rightSynced !== leftSynced) return rightSynced - leftSynced;
+    return String(left.slug || left.id || '').localeCompare(String(right.slug || right.id || ''));
+  });
+}
+
 function isValidSlug(value) {
   return typeof value === 'string' && /^mori-\d{6}-\d{3}$/u.test(value);
 }
@@ -208,7 +226,12 @@ export async function writeSeoAssets(dataset, { previousProducts = [], enrichPro
   const enrichedProducts = typeof enrichProducts === 'function' ? await enrichProducts(assignedProducts) : assignedProducts;
   if (!Array.isArray(enrichedProducts)) throw new Error('SEO asset enrichment must return a product array');
   const seoRevision = await readSeoRevision();
-  const products = applyProductLastModified(previousProducts, enrichedProducts, dataset.syncedAt, seoRevision);
+  const products = applyProductLastModified(
+    previousProducts,
+    sortProductsByPublishedDate(enrichedProducts),
+    dataset.syncedAt,
+    seoRevision,
+  );
   const nextDataset = { ...dataset, products };
   const seoDataset = projectSeoDataset(nextDataset);
 
