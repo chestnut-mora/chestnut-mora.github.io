@@ -3,6 +3,22 @@
   "sourceUrl": "https://myship.7-11.com.tw/general/detail/GM2602274753732",
   "products": [
     {
+      "id": "myship-493c68fe3bd5f782",
+      "slug": "mori-261010-001",
+      "name": "🩵Hanna🩵四條專屬連結🔗",
+      "price": 2170,
+      "image": "/assets/products/mori-261010-001.webp",
+      "sourceImageUrl": "https://myship.7-11.com.tw/i/cgdm/GM2602274753732/2610101385341420.jpg",
+      "sourceUrl": "https://myship.7-11.com.tw/general/detail/GM2602274753732",
+      "deepLink": null,
+      "status": "available",
+      "productId": "2602271055110356",
+      "variantId": "2610101385342290",
+      "specId": "2610101385342290",
+      "skuId": null,
+      "lastmod": "2026-10-10"
+    },
+    {
       "id": "myship-6f93129d9e2ea43b",
       "slug": "mori-261009-001",
       "name": "💜Natalie 18條專屬賣場💜",
