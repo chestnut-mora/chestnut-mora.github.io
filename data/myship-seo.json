@@ -75,12 +75,12 @@
       "sourceImageUrl": "https://myship.7-11.com.tw/i/cgdm/GM2602274753732/2610061379857969.jpg",
       "sourceUrl": "https://myship.7-11.com.tw/general/detail/GM2602274753732",
       "deepLink": null,
-      "status": "available",
+      "status": "soldout",
       "productId": "2602271055110356",
       "variantId": "2610061379863798",
       "specId": "2610061379863798",
       "skuId": null,
-      "lastmod": "2026-10-06"
+      "lastmod": "2026-10-11"
     },
     {
       "id": "myship-06db9db3cc1a5974",
@@ -267,12 +267,12 @@
       "sourceImageUrl": "https://myship.7-11.com.tw/i/cgdm/GM2602274753732/2609231362448273.jpg",
       "sourceUrl": "https://myship.7-11.com.tw/general/detail/GM2602274753732",
       "deepLink": null,
-      "status": "available",
+      "status": "soldout",
       "productId": "2602271055110356",
       "variantId": "2609231362449572",
       "specId": "2609231362449572",
       "skuId": null,
-      "lastmod": "2026-09-22"
+      "lastmod": "2026-10-11"
     },
     {
       "id": "myship-987fecd67b0a803a",
