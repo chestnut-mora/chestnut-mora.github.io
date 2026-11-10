@@ -3,14 +3,12 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { MYSHIP_CONFIG, hasUnavailableNameSignal } from './myship-config.mjs';
 import { buildMyShipStats, mergeProductLifecycle, MYSHIP_LIFECYCLE_STATUSES, stableProductId } from './myship-lifecycle.mjs';
+import { fetchMyShipSourceHtml } from './myship-source.mjs';
 import { archiveMissingProductImages, summarizeArchiveReport } from './archive-myship-product-images.mjs';
 import { writeSeoAssets } from './seo-assets.mjs';
 
 const ROOT_DIR = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const OUTPUT_PATH = resolve(ROOT_DIR, 'public/data/myship-products.json');
-const REQUEST_TIMEOUT_MS = 20_000;
-const USER_AGENT = 'ChestnutMoraMyShipSync/1.0 (+https://chestnut-mora.github.io/)';
-
 function decodeHtmlEntities(value) {
   return String(value)
     .replace(/&quot;|&#34;|&#x22;/gi, '"')
@@ -200,21 +198,6 @@ function validateDataset(dataset) {
   }
 }
 
-async function fetchSourceHtml() {
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
-  try {
-    const response = await fetch(MYSHIP_CONFIG.sourceUrl, {
-      headers: { accept: 'text/html,application/xhtml+xml', 'user-agent': USER_AGENT },
-      signal: controller.signal,
-    });
-    if (!response.ok) throw new Error(`source returned HTTP ${response.status}`);
-    return await response.text();
-  } finally {
-    clearTimeout(timeout);
-  }
-}
-
 async function readLastGoodDataset() {
   try {
     const content = await readFile(OUTPUT_PATH, 'utf8');
@@ -239,7 +222,7 @@ async function main() {
   const previous = await readLastGoodDataset();
 
   try {
-    const html = await fetchSourceHtml();
+    const html = await fetchMyShipSourceHtml();
     const embeddedProducts = extractEmbeddedProducts(html);
     if (embeddedProducts.length === 0) throw new Error('no embedded MyShip product data found');
 

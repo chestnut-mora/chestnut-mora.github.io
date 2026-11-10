@@ -65,6 +65,7 @@ git diff -- public/sitemap.xml
 判讀原則：
 
 - 抓取失敗不得產生全商品 removed。
+- 公開頁逾時、網路錯誤與暫時性 HTTP 5xx 最多重試 3 次；仍失敗時保留上一份有效資料。HTTP 429 不重試，避免增加來源負載。
 - 只有現貨商品出現在首頁精選萌栗。
 - 首頁精選萌栗與 `/products` 目前萌栗都應由 `sortProductsByPublishedDate` 依上架日期新到舊排列；最新日期／同日較大流水號應在前。
 - 無庫存 variant 不應顯示為可購買。

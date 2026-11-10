@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { buildMyShipStats, mergeProductLifecycle, REMOVAL_GRACE_PERIOD_MS, stableProductId } from './myship-lifecycle.mjs';
+import { fetchMyShipSourceHtml } from './myship-source.mjs';
 
 const baseProduct = {
   id: 'myship-example',
@@ -77,5 +78,27 @@ assert.deepEqual(
   },
   { available: 1, soldout: 1, removed: 1, archived: 1 },
 );
+
+const originalFetch = globalThis.fetch;
+let sourceFetchAttempts = 0;
+try {
+  globalThis.fetch = async () => {
+    sourceFetchAttempts += 1;
+    if (sourceFetchAttempts === 1) throw new TypeError('temporary network error');
+    return new Response('<main>MyShip</main>', { status: 200 });
+  };
+  assert.equal(await fetchMyShipSourceHtml(), '<main>MyShip</main>');
+  assert.equal(sourceFetchAttempts, 2);
+
+  sourceFetchAttempts = 0;
+  globalThis.fetch = async () => {
+    sourceFetchAttempts += 1;
+    return new Response('', { status: 429 });
+  };
+  await assert.rejects(fetchMyShipSourceHtml(), /source returned HTTP 429/);
+  assert.equal(sourceFetchAttempts, 1);
+} finally {
+  globalThis.fetch = originalFetch;
+}
 
 console.log('MyShip lifecycle tests passed.');
