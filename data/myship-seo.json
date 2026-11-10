@@ -499,6 +499,22 @@
       "lastmod": "2026-09-06"
     },
     {
+      "id": "myship-b7c66aa6472efc9d",
+      "slug": "mori-260605-012",
+      "name": "阿瑪莉莉絲-小蛇",
+      "price": 400,
+      "image": "/assets/products/mori-260605-012.webp",
+      "sourceImageUrl": "https://myship.7-11.com.tw/i/cgdm/GM2602274753732/2606051201372840.jpg",
+      "sourceUrl": "https://myship.7-11.com.tw/general/detail/GM2602274753732",
+      "deepLink": null,
+      "status": "available",
+      "productId": "2602271055110356",
+      "variantId": "2606051201389427",
+      "specId": "2606051201389427",
+      "skuId": null,
+      "lastmod": "2026-11-10"
+    },
+    {
       "id": "myship-20f1ecda7247be1b",
       "slug": "mori-260605-011",
       "name": "Dimoo-小麋鹿",
