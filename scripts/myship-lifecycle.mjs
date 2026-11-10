@@ -1,3 +1,5 @@
+import { createHash } from 'node:crypto';
+
 export const REMOVAL_GRACE_PERIOD_MS = 24 * 60 * 60 * 1000;
 
 export const MYSHIP_LIFECYCLE_STATUSES = Object.freeze([
@@ -7,6 +9,10 @@ export const MYSHIP_LIFECYCLE_STATUSES = Object.freeze([
   'archived',
   'unknown',
 ]);
+
+export function stableProductId(storeId, productId, sourceVariantKey) {
+  return `myship-${createHash('sha256').update(`${storeId}:${productId || ''}:${sourceVariantKey}`).digest('hex').slice(0, 16)}`;
+}
 
 function identityKey(product) {
   const sourceKey = product.variantId || product.specId || product.skuId;

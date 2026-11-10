@@ -81,3 +81,7 @@ Google 顯示的必要條件，目前不作為主要格式。
 上架日期倒序排列；同日再依三碼流水號倒序。這讓新同步進來的現貨優先出現，
 同時保留永久 slug 與商品生命週期資料不變。排序集中在
 `data/myship.ts` 的 `sortProductsByPublishedDate`，不要在各頁自行建立另一套排序。
+
+## D-018 MyShip 商品 ID 使用來源 identity
+
+內部商品 ID 由賣場 ID、商品 ID 與 variant/spec ID 組成；若規格 ID 缺漏，才使用 SKU 或規格名稱。顯示名稱可重複或變更，不得單獨當成唯一 identity。生命週期合併後須先驗證 ID，再寫入 SEO、sitemap 與 slug registry。

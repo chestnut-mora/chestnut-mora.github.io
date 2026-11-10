@@ -77,3 +77,9 @@ MyShip workflow 可能在工程師工作期間提交資料，造成 push non-fas
 ## 10. 文件可能落後程式
 
 品牌規格在多輪迭代後曾出現舊標題、舊 reduced-motion 行為與「單一路由」描述。重大功能變更的 Definition of Done 必須包含更新 `docs/`；工程師接手時仍以程式、Git 歷史與實際 Actions 為現況證據。
+
+## 11. MyShip 同名規格造成 stable ID collision
+
+舊解析器只用賣場 ID 與規格顯示名稱產生商品 ID。不同商品／規格只要重用名稱，就會得到相同 ID；生命週期合併又會保留缺席未滿 24 小時的舊商品，最後在驗證時發現重複 ID，讓該次同步失敗。
+
+商品 ID 現在使用賣場 ID、商品 ID 與 variant/spec ID 組合；來源缺少規格 ID 時才依序退回 SKU、規格名稱。相同資料區塊重複嵌入頁面時，會按來源 ID 去重。合併結果在寫 SEO、sitemap 與 slug registry 前先驗證，錯誤會列出衝突來源 identity，並保留上一份有效資料。

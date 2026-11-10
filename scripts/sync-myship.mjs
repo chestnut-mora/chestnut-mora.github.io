@@ -1,9 +1,8 @@
-import { createHash } from 'node:crypto';
 import { readFile, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { MYSHIP_CONFIG, hasUnavailableNameSignal } from './myship-config.mjs';
-import { buildMyShipStats, mergeProductLifecycle, MYSHIP_LIFECYCLE_STATUSES } from './myship-lifecycle.mjs';
+import { buildMyShipStats, mergeProductLifecycle, MYSHIP_LIFECYCLE_STATUSES, stableProductId } from './myship-lifecycle.mjs';
 import { archiveMissingProductImages, summarizeArchiveReport } from './archive-myship-product-images.mjs';
 import { writeSeoAssets } from './seo-assets.mjs';
 
@@ -117,10 +116,6 @@ function makeImageUrl(imagePath, storeId) {
   return `${MYSHIP_CONFIG.imageBaseUrl}/i/cgdm/${encodeURIComponent(storeId)}/${path}`;
 }
 
-function stableId(storeId, sourceVariantName) {
-  return `myship-${createHash('sha256').update(`${storeId}:${sourceVariantName}`).digest('hex').slice(0, 16)}`;
-}
-
 function extractEmbeddedProducts(html) {
   const products = [];
   const pattern = /data-product\s*=\s*(["'])(.*?)\1/gis;
@@ -149,7 +144,9 @@ function normalizeProducts(rawProducts, syncedAt) {
       const sourceVariantName = asTrimmedString(getField(spec, ['Cgds_Spec', 'spec', 'name', 'variantName']));
       if (!sourceVariantName) continue;
       const name = cleanVariantName(sourceVariantName);
-      const id = stableId(storeId, sourceVariantName);
+      const variantId = asTrimmedString(getField(spec, ['Cgds_Id', 'variantId', 'specId'])) || null;
+      const skuId = asTrimmedString(getField(spec, ['Cgds_SkuId', 'skuId', 'sku'])) || null;
+      const id = stableProductId(storeId, productId, variantId || skuId || sourceVariantName);
       if (seen.has(id)) continue;
       seen.add(id);
 
@@ -173,9 +170,9 @@ function normalizeProducts(rawProducts, syncedAt) {
         status,
         syncedAt,
         productId,
-        variantId: asTrimmedString(getField(spec, ['Cgds_Id', 'variantId', 'specId'])) || null,
-        specId: asTrimmedString(getField(spec, ['Cgds_Id', 'specId', 'variantId'])) || null,
-        skuId: asTrimmedString(getField(spec, ['Cgds_SkuId', 'skuId', 'sku'])) || null,
+        variantId,
+        specId: variantId,
+        skuId,
         excluded: status === 'unknown',
         ...(status === 'unknown' ? { exclusionReason: selectable === false ? 'unselectable' : 'unknown-stock' } : {}),
       });
@@ -190,13 +187,16 @@ function validateDataset(dataset) {
     throw new Error('validation failed: no product variants were parsed');
   }
   const allowedStatuses = new Set(MYSHIP_LIFECYCLE_STATUSES);
-  const ids = new Set();
+  const ids = new Map();
   for (const product of dataset.products) {
-    if (!product.id || ids.has(product.id)) throw new Error('validation failed: duplicate or missing stable product id');
+    const sourceIdentity = `${product.productId || '<no-product>'}:${product.variantId || product.specId || product.skuId || product.sourceVariantName || '<no-variant>'}`;
+    if (!product.id) throw new Error(`validation failed: missing stable product id for ${sourceIdentity}`);
+    const previousIdentity = ids.get(product.id);
+    if (previousIdentity) throw new Error(`validation failed: stable product id collision ${product.id} between ${previousIdentity} and ${sourceIdentity}`);
     if (!product.name || !product.sourceVariantName || !allowedStatuses.has(product.status)) {
       throw new Error(`validation failed: incomplete product ${product.id || '<unknown>'}`);
     }
-    ids.add(product.id);
+    ids.set(product.id, sourceIdentity);
   }
 }
 
@@ -246,6 +246,7 @@ async function main() {
     const syncedAt = new Date().toISOString();
     const incomingProducts = normalizeProducts(embeddedProducts, syncedAt);
     const products = mergeProductLifecycle(previous?.products || [], incomingProducts, syncedAt);
+    validateDataset({ products });
     const stats = buildMyShipStats(products);
     let archiveSummary = null;
     const dataset = await writeSeoAssets({
@@ -262,8 +263,6 @@ async function main() {
         return archiveResult.products;
       },
     });
-    validateDataset(dataset);
-
     if (previous && JSON.stringify(comparableDataset(previous)) === JSON.stringify(comparableDataset(dataset))) {
       console.log(JSON.stringify({ output: OUTPUT_PATH, changed: false, stats, archive: archiveSummary, syncedAt: previous.syncedAt }, null, 2));
       return;

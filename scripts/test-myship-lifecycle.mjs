@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
-import { buildMyShipStats, mergeProductLifecycle, REMOVAL_GRACE_PERIOD_MS } from './myship-lifecycle.mjs';
+import { createHash } from 'node:crypto';
+import { buildMyShipStats, mergeProductLifecycle, REMOVAL_GRACE_PERIOD_MS, stableProductId } from './myship-lifecycle.mjs';
 
 const baseProduct = {
   id: 'myship-example',
@@ -23,6 +24,18 @@ const firstSyncAt = '2026-09-06T00:00:00.000Z';
 const firstSync = mergeProductLifecycle([], [baseProduct], firstSyncAt);
 assert.equal(firstSync[0].status, 'available');
 assert.equal(firstSync[0].missingSince, null);
+
+const sharedName = '同名規格';
+const legacyNameId = `myship-${createHash('sha256').update(`store-1:${sharedName}`).digest('hex').slice(0, 16)}`;
+const newSourceId = stableProductId('store-1', 'listing-new', 'variant-new');
+assert.notEqual(legacyNameId, newSourceId);
+const mergedSameNameProducts = mergeProductLifecycle(
+  [{ ...baseProduct, id: legacyNameId, name: sharedName, sourceVariantName: sharedName, productId: 'listing-old', variantId: 'variant-old', specId: 'variant-old' }],
+  [{ ...baseProduct, id: newSourceId, name: sharedName, sourceVariantName: sharedName, productId: 'listing-new', variantId: 'variant-new', specId: 'variant-new' }],
+  '2026-09-06T01:00:00.000Z',
+);
+assert.equal(mergedSameNameProducts.length, 2);
+assert.equal(new Set(mergedSameNameProducts.map((product) => product.id)).size, 2);
 
 const missingBeforeGrace = mergeProductLifecycle(firstSync, [], '2026-09-06T23:59:59.000Z');
 assert.equal(missingBeforeGrace[0].status, 'available');
